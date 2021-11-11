@@ -24,6 +24,7 @@ const { download } = require("./images/image");
 async function gen() {
   try {
     const bodys  = parser.parse(block.body)
+    console.log('bodys', bodys)
     // const image = new ImageRun({
     //   data: await download(),
     //   transformation: {

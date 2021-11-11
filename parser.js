@@ -12,13 +12,13 @@ const {
   ImageRun,
   convertInchesToTwip,
 } = require("docx");
-const {run} = require("./parser/parsers");
+const { run } = require("./parser/parsers");
 
 function parseParagraph(childs, level = 0) {
   return childs.reduce((a, c) => {
-    switch(c.type){
-      case 'run':
-        a.push(...run(c.payload,level)) 
+    switch (c.type) {
+      case "run":
+        a = [...a, ...run(c.payload, level)];
     }
     if (a.childs) {
       a = [...a, ...parseParagraph(a.childs)];
@@ -29,7 +29,7 @@ function parseParagraph(childs, level = 0) {
 
 module.exports = {
   parse: (body) => {
-    const collection = [];
+    
     return body.reduce((a, c) => {
       const head = new Paragraph({
         text: c.title,
@@ -42,8 +42,9 @@ module.exports = {
       });
       a.push(head);
       if (c.childs) {
-        a = [...a, ...parseParagraph(c.childs)];
+        a = [...a, ...parseParagraph(c.childs, 1)];
       }
+     
       return a;
     }, []);
   },
