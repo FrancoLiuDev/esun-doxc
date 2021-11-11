@@ -3,8 +3,8 @@ module.exports = {
     {
       title: "畫面設計",
       childs: [
-        { type: "run", text: "grgrgrg" },
-        { type: "run", text: "grgrgrg" },
+        { type: "run", payload: "grgrgrg" },
+        { type: "run", payload: "grgrgrg" },
       ],
     },
     { title: "欄位定義" },

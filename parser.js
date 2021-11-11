@@ -18,7 +18,7 @@ function parseParagraph(childs, level = 0) {
   return childs.reduce((a, c) => {
     switch(c.type){
       case 'run':
-        a.push(...run(c.payload)) 
+        a.push(...run(c.payload,level)) 
     }
     if (a.childs) {
       a = [...a, ...parseParagraph(a.childs)];
