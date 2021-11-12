@@ -11,7 +11,7 @@ module.exports = {
         },
         content: [
           // { type: "run", payload:["grgrgrg" , {type:'s',content:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/150px-NewTux.svg.png'} ]  },
-          { type: "run", payload: ["grgrgrg"] },
+          { type: "run", payload: "grgrgrg" },
          
         ],
       },
