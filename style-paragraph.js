@@ -26,6 +26,46 @@ const {
             color: "990000",
           },
         },
+        
+        {
+          id: "DetailBlockGreen",
+          name: "DetailBlockGreen",
+          basedOn: "Heading1",
+          quickFormat: true,
+          run: {
+            italics: true,
+            color: "00ff00",
+          },
+          paragraph: {
+            spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+          },
+        },
+        {
+          id: "DetailBlockRed",
+          name: "DetailBlockRed",
+          basedOn: "Normal",
+          quickFormat: true,
+          run: {
+            italics: true,
+            color: "990000",
+          },
+          paragraph: {
+            spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+          },
+        },
+        {
+          id: "DetailBlock",
+          name: "DetailBlock",
+          basedOn: "Normal",
+          quickFormat: true,
+          run: {
+            italics: true,
+            color: "990000",
+          },
+          paragraph: {
+            spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+          },
+        },
       ],
   };
   

@@ -1,4 +1,5 @@
 const block = require("./block.js");
+ 
 const {
   File,
   HeadingLevel,
@@ -11,16 +12,23 @@ const {
   TextRun,
   UnderlineType,
   ImageRun,
+  Table,
+  TableRow,
+  TableCell,
+  WidthType,
+  ShadingType,
+  Numbering,
   convertInchesToTwip,
 } = require("docx");
+
+ 
 const fs = require("fs");
-const levels = require("./levels");
+const levels = require("./style-levels");
 const styleDefault = require("./style-default");
 const styleParagraph = require("./style-paragraph");
 const parser= require("./parser");
- 
 const { download } = require("./images/image");
-
+  
 async function gen() {
   try {
     const bodys  = parser.parse(block.body)
@@ -44,6 +52,10 @@ async function gen() {
             levels: levels.DECIMAL_START,
             reference: "reference-block",
           },
+          {
+            levels: levels.DECIMAL_START,
+            reference: "reference-miner",
+          },
         ],
       },
       styles: {
@@ -57,7 +69,6 @@ async function gen() {
               hyperlink: true,
             }),
             ...bodys,
-            
           ],
         },
       ],

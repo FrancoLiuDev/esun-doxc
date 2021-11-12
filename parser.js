@@ -12,15 +12,21 @@ const {
   ImageRun,
   convertInchesToTwip,
 } = require("docx");
-const { run } = require("./parser/parsers");
+const parser = require("./parser/parsers");
 
 function parseParagraph(childs, level = 0) {
   console.log('parseParagraph',level)
-  return childs.reduce((a, c) => {
-    switch (c.type) {
-      case "run":
-        a = [...a, ...run(c.payload, level)];
+  return childs.content.reduce((a, c) => {
+
+    if (parser[c.type]){
+      console.log('parser function ', c.type)
+      a = [...a, ...parser[c.type]({payload: c.payload, level, meta:c.meta ? c.meta : childs.meta})];
     }
+   
+    // switch (c.type) {
+    //   case "run":
+    //     a = [...a, ...parser[c.type]({payload: c.payload, level, meta:c.meta ? c.meta : childs.meta})];
+    // }
     if (c.childs) {
       a = [...a, ...parseParagraph(c.childs,level+1)];
     }
@@ -38,13 +44,12 @@ module.exports = {
           level: 0,
         },
         heading: HeadingLevel.HEADING_1,
-        stylesWithLevels: [new StyleLevel("MySpectacularStyle", 0)],
+        
       });
       a.push(head);
       if (c.childs) {
         a = [...a, ...parseParagraph(c.childs, 1)];
       }
-     
       return a;
     }, []);
   },

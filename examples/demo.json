@@ -1,0 +1,32 @@
+{
+  "body": [
+    {
+      "title": "畫面設計",
+      "childs": {
+        "meta": { "style": "DetailBlockGreen" },
+        "content": [
+          { "type": "run", "payload": "grgrgrg" },
+          {
+            "type": "run",
+            "payload": "grgrgrg1",
+            "childs": {
+              "meta": { "style": "DetailBlockRed" },
+              "content": [
+                {
+                  "meta": { "style": "DetailBlockRed" },
+                  "type": "run",
+                  "payload": "fefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegeg"
+                },
+                {
+                  "meta": { "style": "DetailBlockRed" },
+                  "type": "run",
+                  "payload": "fefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegeg"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
