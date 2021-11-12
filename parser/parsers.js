@@ -16,8 +16,11 @@ const {
   ShadingType,
   convertInchesToTwip,
 } = require("docx");
-
+const { download } = require("../images/image");
 function parseRun({ payload, level, meta = {} }) {
+
+   
+ 
   const collections =[]
   collections.push(
     new Paragraph({

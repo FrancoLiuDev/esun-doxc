@@ -32,7 +32,7 @@ const { download } = require("./images/image");
 async function gen() {
   try {
     const bodys  = await parser.parse(block.body)
-    // console.log('bodys', bodys)
+    console.log('bodys', bodys)
     // const image = new ImageRun({
     //   data: await download(),
     //   transformation: {
@@ -70,8 +70,9 @@ async function gen() {
         },
       ],
     });
-
+  
     Packer.toBuffer(doc).then((buffer) => {
+     
       fs.writeFileSync("My Document.docx", buffer);
     });
   } catch (error) {
