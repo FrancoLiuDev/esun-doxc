@@ -31,8 +31,8 @@ const { download } = require("./images/image");
   
 async function gen() {
   try {
-    const bodys  = parser.parse(block.body)
-    console.log('bodys', bodys)
+    const bodys  = await parser.parse(block.body)
+    // console.log('bodys', bodys)
     // const image = new ImageRun({
     //   data: await download(),
     //   transformation: {
@@ -50,12 +50,9 @@ async function gen() {
         config: [
           {
             levels: levels.DECIMAL_START,
-            reference: "reference-block",
+            reference: "number-sd-design-index",
           },
-          {
-            levels: levels.DECIMAL_START,
-            reference: "reference-miner",
-          },
+          
         ],
       },
       styles: {

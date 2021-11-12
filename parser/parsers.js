@@ -17,11 +17,12 @@ const {
   convertInchesToTwip,
 } = require("docx");
 
-function parseRun({ payload, level, meta = {} }) {
-  const collections = [];
-  collections.push(
-    new Paragraph({
-      text: payload,
+async function parseRun({ payload, level, meta = {} }) {
+  const collections = await payload.reduce(async (a, p) => {
+    let content = null;
+
+    content = new Paragraph({
+      text: 'fefefe',
       // indent: {
       //   left: "4cm",
       //   right:100,
@@ -38,17 +39,35 @@ function parseRun({ payload, level, meta = {} }) {
           }
         : {},
       style: meta.style,
-      
-      //   heading: HeadingLevel.HEADING_1,
-      //   stylesWithLevels: [new StyleLevel("MySpectacularStyle", 0)],
-    })
-  );
+    });
+    a.push(content)
+   
+    // a = [...a, content];
+    return a;
+  }, []);
+  console.log("collections", collections);
+  // collections.push(
+  //   new Paragraph({
+  //     text: payload,
+  //    　
+  //     numbering: meta.number
+  //       ? {
+  //           reference: meta.number.name,
+  //           level: level,
+  //         }
+  //       : {},
+  //     style: meta.style,
+
+  //     //   heading: HeadingLevel.HEADING_1,
+  //     //   stylesWithLevels: [new StyleLevel("MySpectacularStyle", 0)],
+  //   })
+  // );
   console.log("parseRun", payload, level);
 
   return collections;
 }
 
-function parseTable({ payload, level, meta = {} }) {
+async function parseTable({ payload, level, meta = {} }) {
   const headers = payload.headers;
   const rows = payload.rows;
   const tableCellHeaders = headers.map((h) => {

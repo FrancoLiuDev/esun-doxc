@@ -6,7 +6,7 @@ module.exports = {
         meta: {
            
           number: {
-            name: "reference-block",
+            name: "number-sd-design-index",
           },
         },
         content: [
@@ -17,7 +17,7 @@ module.exports = {
             childs: {
               meta: {
                 number: {
-                  name: "reference-block",
+                  name: "number-sd-design-index",
                 },
               },
               content: [
@@ -63,7 +63,7 @@ module.exports = {
     { title: "欄位定義", childs: {
         meta: {
           number: {
-            name: "reference-block",
+            name: "number-sd-design-index",
           },
         },
         content: [
@@ -74,7 +74,7 @@ module.exports = {
             childs: {
               meta: {
                 number: {
-                  name: "reference-block",
+                  name: "number-sd-design-index",
                 },
               },
               content: [
