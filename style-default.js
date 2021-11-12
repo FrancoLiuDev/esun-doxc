@@ -24,7 +24,7 @@ const {
           },
           paragraph: {
             spacing: {
-              after: 120,
+              after: 10,
             },
           },
         },

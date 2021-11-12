@@ -30,6 +30,10 @@ const doc = new File({
                 indent: {
                   left: convertInchesToTwip(0.5),
                   hanging: convertInchesToTwip(0.18),
+                  left: "4cm",
+        right:100,
+        hanging:'2cm',
+        firstLine:'3cm'
                 },
               },
             },

@@ -15,13 +15,14 @@ const {
 const { run } = require("./parser/parsers");
 
 function parseParagraph(childs, level = 0) {
+  console.log('parseParagraph',level)
   return childs.reduce((a, c) => {
     switch (c.type) {
       case "run":
         a = [...a, ...run(c.payload, level)];
     }
-    if (a.childs) {
-      a = [...a, ...parseParagraph(a.childs)];
+    if (c.childs) {
+      a = [...a, ...parseParagraph(c.childs,level+1)];
     }
     return a;
   }, []);
@@ -29,7 +30,6 @@ function parseParagraph(childs, level = 0) {
 
 module.exports = {
   parse: (body) => {
-    
     return body.reduce((a, c) => {
       const head = new Paragraph({
         text: c.title,

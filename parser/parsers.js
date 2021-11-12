@@ -19,7 +19,13 @@ function parseRun(payload, level) {
     new Paragraph({
       text: payload,
       indent: {
-        left: 720,
+        left: "4cm",
+        right:100,
+        hanging:'2cm',
+        firstLine:'3cm'
+      },
+      spacing: {
+        before: 200,
       },
       numbering: {},
       //   heading: HeadingLevel.HEADING_1,

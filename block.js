@@ -4,12 +4,19 @@ module.exports = {
       title: "畫面設計",
       childs: [
         { type: "run", payload: "grgrgrg" },
-        { type: "run", payload: "grgrgrg" },
+        {
+          type: "run",
+          payload: "grgrgrg1",
+          childs: [
+            { type: "run", payload: "fefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegeg" },
+            { type: "run", payload: "fefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegegfefgegegegeggegegeg" },
+          ],
+        },
       ],
     },
-    { title: "欄位定義" },
-    { title: "邏輯描述" },
-    { title: "Service整理" },
+    // { title: "欄位定義" },
+    // { title: "邏輯描述" },
+    // { title: "Service整理" },
   ],
   body1: {
     //畫面關聯圖
