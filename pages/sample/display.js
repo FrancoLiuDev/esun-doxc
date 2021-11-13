@@ -38,6 +38,7 @@ module.exports = {
               {
                 type: "run",
                 payload: [
+                  // encodeURI("http://localhost:3000/getfile?file=手續費/手續費查詢.png")
                   IMAGE_UI_FORM(
                     "https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
                   ),
