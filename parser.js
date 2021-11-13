@@ -23,7 +23,7 @@ function parseParagraph(childs, level = 0) {
         ...parser[c.type]({
           payload: c.payload,
           level,
-          meta: c.meta ? c.meta : childs.meta,
+          meta: c.meta ? {...childs.meta,...c.meta} : childs.meta,
         }),
       ];
     }

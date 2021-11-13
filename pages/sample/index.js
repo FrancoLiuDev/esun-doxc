@@ -1,61 +1,13 @@
-const { IMAGE_UI_FORM } = require("./style/image-styleing");
-const { STRING_RUN_BLOCK_ARRAY_LIST } = require("./style/run-string-style");
 
+var root = require('app-root-path');
+const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
+const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root + "/style/run-string-style");
+const {UIDESIGN}  = require('./display');
 module.exports = {
   body: {
     content: [
-      {
-        type: "run",
-        payload: "畫面設計",
-        meta: {
-          style: "sd-descripion-header",
-          number: {
-            name: "number-sd-design-index",
-          },
-        },
-        childs: {
-          meta: {
-            style: "sd-descripion-body",
-            number: {
-              name: "number-sd-design-index",
-            },
-          },
-          content: [
-            {
-              type: "run",
-              payload: "fefefef",
-              meta: {
-                style: "sd-descripion-body",
-                number: {
-                  name: "number-sd-design-index",
-                },
-              },
-              childs: {
-                meta: {
-                  style: "sd-descripion-body",
-                },
-                content: [
-                  { type: "run", payload: ["grgrgrg"] },
-                  {
-                    type: "run",
-                    payload: [
-                      IMAGE_UI_FORM(
-                        "https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
-                      ),
-                    ],
-                  },
-                ],
-              },
-            },
-            ...STRING_RUN_BLOCK_ARRAY_LIST(
-              `grgrgrgrg
-              grgrgrgrgrgrgrgrgr`
-            ),
-
-            { type: "run", payload: "grgrgrg" },
-          ],
-        },
-      },
+      UIDESIGN,
+       
       {
         title: "欄位定義",
         childs: {
