@@ -15,11 +15,7 @@ module.exports = {
             type: "run",
             payload: [
               "grgrgrg",
-              {
-                type: "image",
-                content:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/150px-NewTux.svg.png",
-              },
+               
             ],
           },
           {

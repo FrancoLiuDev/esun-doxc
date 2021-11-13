@@ -44,12 +44,18 @@ function parseRun({ payload, level, meta = {} }) {
       } else {
         switch (c.type) {
           case "image":
+            const img = download(c.content);
+            const width = c.width ? c.width : img.dimensions.width
+            const rate = width / img.dimensions.width;
+            const height = c.content.height
+              ? c.content.height
+              : img.dimensions.height * rate;
             a.push(
               new ImageRun({
-                data: download(c.content),
+                data: img.buffer,
                 transformation: {
-                  width: c.width,
-                  height: c.height,
+                  width: width,
+                  height: height,
                 },
                 break: 1,
               })
@@ -59,7 +65,7 @@ function parseRun({ payload, level, meta = {} }) {
       }
       return a;
     }, []);
-    
+
     collections = [
       new Paragraph({
         style: meta.style,
