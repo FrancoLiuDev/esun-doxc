@@ -42,7 +42,7 @@ function parseParagraph1(childs, level = 0) {
 }
 
 module.exports = {
-  parse: (body) => {
+  parse1: (body) => {
     return body.reduce((a, c) => {
       const head = new Paragraph({
         text: c.title,
@@ -59,34 +59,24 @@ module.exports = {
       return a;
     }, []);
   },
-  parse1: async (body) => {
-    let collect = [];
-    const delayPromise = (data) =>
-      new Promise((resolve, reject) => {
-        let c = [];
-        const head = new Paragraph({
-          text: data.title,
-          numbering: {
-            reference: "reference-block",
-            level: 0,
-          },
-          heading: HeadingLevel.HEADING_1,
-        });
-        c.push(head);
-        if (data.childs) {
-          // await parseParagraph(data.childs, 1)
-        }
-        resolve(data.childs ? data.childs : []);
-      }).then((value) => {
-        return parseParagraph(value, 1);
-      });
+  parse: (body) => {
+    console.log('body', body)
+    return [...parseParagraph(body)]
 
-    const asyncWay = async (dataArray) => {
-      for (const i in dataArray) {
-        collect = [...collect, ...(await delayPromise(dataArray[i]))];
-      }
-    };
-    await asyncWay(body);
-    return collect;
+    // return body.reduce((a, c) => {
+    //   const head = new Paragraph({
+    //     text: c.title,
+    //     numbering: {
+    //       reference: "reference-block",
+    //       level: 0,
+    //     },
+    //     heading: HeadingLevel.HEADING_1,
+    //   });
+    //   a.push(head);
+    //   if (c.childs) {
+    //     a = [...a, ...parseParagraph(c.childs, 1)];
+    //   }
+    //   return a;
+    // }, []);
   },
 };

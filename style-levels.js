@@ -25,8 +25,8 @@ styles = styles.map((s, i) =>{
   return {...s,level:i,text: `%${i+1}`,}
 })
 module.exports = {
-  // DECIMAL_START: styles,
-  DECIMAL_START: [
+  DECIMAL_START: styles,
+  DECIMAL_START1: [
     {
       level:0,
       format: LevelFormat.DECIMAL,

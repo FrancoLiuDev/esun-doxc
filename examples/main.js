@@ -12,8 +12,7 @@ const {
   convertInchesToTwip,
 } = require("docx");
 const fs = require("fs");
- 
- 
+
 const doc = new File({
   features: {
     updateFields: true,
@@ -141,10 +140,26 @@ const doc = new File({
         basedOn: "Heading1",
         next: "Heading1",
         quickFormat: true,
-     
+
         run: {
           italics: true,
           color: "990000",
+        },
+      },
+      {
+        id: "Normaltext",
+        name: "Normaltext",
+        basedOn: "Normal",
+        // next: "Heading1",
+        quickFormat: true,
+        paragraph: {
+           
+          indent: { left: convertInchesToTwip(3)  },
+        },
+
+        run: {
+          italics: true,
+          color: "9900ff",
         },
       },
       {
@@ -152,7 +167,7 @@ const doc = new File({
         name: "DetailBlock",
         basedOn: "Normal",
         quickFormat: true,
-      
+
         paragraph: {
           spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
           indent: { left: 1440, hanging: 980 },
@@ -168,81 +183,120 @@ const doc = new File({
           headingStyleRange: "1-5",
           stylesWithLevels: [new StyleLevel("MySpectacularStyle", 1)],
         }),
+        // new Paragraph({
+
+        //   numbering: {
+        //     reference: "my-crazy-numbering",
+        //     level: 0
+        //   },
+
+        //   children: [new TextRun('Hey you')],
+        // }),
         new Paragraph({
           text: "Hey you",
-          style:'DetailBlock'
-          
+
+          numbering: {
+            reference: "my-crazy-numbering",
+            level: 1,
+          },
         }),
         new Paragraph({
           text: "What's up fam",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1
-          }
+            level: 2,
+          },
+        }),
+        new Paragraph({
+          style: "Normaltext",
+          children: [
+            new TextRun({
+              text: "Name:",
+              bold: true,
+              font: "Calibri",
+              allCaps: true,
+
+               
+            }),
+            new TextRun({
+              text: "Name:",
+              bold: true,
+              font: "Calibri",
+              allCaps: true,
+              break: 1,
+            }),
+            new TextRun({
+              text: "Name:",
+              bold: true,
+              font: "Calibri",
+              allCaps: true,
+              break: 1,
+            }),
+          ],
         }),
         new Paragraph({
           text: "Hello World 2",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 0
-          }
+            level: 3,
+          },
         }),
         new Paragraph({
           text: "Yeah boi",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1
-          }
+            level: 1,
+          },
         }),
         new Paragraph({
           text: "Hey you",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 0
-          }
+            level: 0,
+          },
         }),
         new Paragraph({
           text: "What's up fam",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1
-          }
+            level: 1,
+          },
         }),
         new Paragraph({
           text: "Hello World 2",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 0
-          }
+            level: 0,
+          },
         }),
         new Paragraph({
           text: "Yeah boi",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1
-          }
+            level: 1,
+          },
         }),
         new Paragraph({
           text: "101 MSXFM",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 0
-          }
+            level: 0,
+          },
         }),
         new Paragraph({
           text: "back to level 1",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1
-          }
+            level: 1,
+          },
         }),
         new Paragraph({
           text: "back to level 0",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 0
-          }
-        })
+            level: 0,
+          },
+        }),
       ],
     },
   ],

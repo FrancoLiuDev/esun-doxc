@@ -28,13 +28,12 @@ function parseRun({ payload, level, meta = {} }) {
     collections = [
       new Paragraph({
         style: meta.style,
-         
         numbering: meta.number
           ? {
               reference: meta.number.name,
               level: level,
             }
-          : {},
+          : undefined,
         children: [new TextRun(payload)],
       }),
     ];
@@ -46,7 +45,7 @@ function parseRun({ payload, level, meta = {} }) {
         switch (c.type) {
           case "image":
             const img = download(c.content);
-            const width = c.width ? c.width : img.dimensions.width
+            const width = c.width ? c.width : img.dimensions.width;
             const rate = width / img.dimensions.width;
             const height = c.content.height
               ? c.content.height
@@ -62,6 +61,16 @@ function parseRun({ payload, level, meta = {} }) {
               })
             );
             break;
+          case 'string':
+            const str = new TextRun({
+              text: c.content,
+              bold: c.bold,
+              font: c.font,
+              allCaps: c.allCaps,
+              break: c.break,
+            })
+            a.push(str);
+            break;
         }
       }
       return a;
@@ -75,7 +84,7 @@ function parseRun({ payload, level, meta = {} }) {
               reference: meta.number.name,
               level: level,
             }
-          : {},
+          : undefined,
         children: list,
       }),
     ];

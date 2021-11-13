@@ -16,17 +16,23 @@ const {
 module.exports = {
   STYLE_DEFAULT: [
     {
-      id: "heading-descripion-content",
-      name: "heading-descripion-content",
+      id: "sd-descripion-header",
+      name: "sd-descripion-header",
       basedOn: "Heading3",
       quickFormat: true,
-      run: {
-        italics: true,
-        color: "0a0a0a",
-      },
       paragraph: {
-        
         spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+        indent: { left: 250, hanging: 0 },
+      },
+    },
+    {
+      id: "sd-descripion-body",
+      name: "sd-descripion-body",
+      basedOn: "Normal",
+      quickFormat: true,
+      paragraph: {
+        spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+        indent: { left: 600, hanging: 0 },
       },
     },
     {
@@ -51,6 +57,7 @@ module.exports = {
       },
       paragraph: {
         spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+        indent: { left: 1440, hanging: 980 },
       },
     },
     {
