@@ -25,8 +25,8 @@ styles = styles.map((s, i) =>{
   return {...s,level:i,text: `%${i+1}`,}
 })
 module.exports = {
-  DECIMAL_START: styles,
-  DECIMAL_START1: [
+  // DECIMAL_START: styles,
+  DECIMAL_START: [
     {
       level:0,
       format: LevelFormat.DECIMAL,
@@ -35,7 +35,7 @@ module.exports = {
       style: {
         paragraph: {
           indent: {
-            left: convertInchesToTwip(0.1),
+            left: convertInchesToTwip(3),
             // right: convertInchesToTwip(0.18),
             hanging: convertInchesToTwip(0.18),
             // firstLine: convertInchesToTwip(0),
@@ -54,7 +54,17 @@ module.exports = {
         }
       }
     },
-     
+    {
+      level: 2,
+      format: "decimal",
+      text: "%3.",
+      alignment: AlignmentType.START,
+      style: {
+        paragraph: {
+          indent: { left: 1740, hanging: 980 }
+        }
+      }
+    },
   ],
   
 };

@@ -28,6 +28,7 @@ function parseRun({ payload, level, meta = {} }) {
     collections = [
       new Paragraph({
         style: meta.style,
+         
         numbering: meta.number
           ? {
               reference: meta.number.name,

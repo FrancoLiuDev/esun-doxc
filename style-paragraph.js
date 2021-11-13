@@ -25,6 +25,7 @@ module.exports = {
         color: "0a0a0a",
       },
       paragraph: {
+        
         spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
       },
     },

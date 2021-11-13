@@ -141,6 +141,7 @@ const doc = new File({
         basedOn: "Heading1",
         next: "Heading1",
         quickFormat: true,
+     
         run: {
           italics: true,
           color: "990000",
@@ -151,8 +152,10 @@ const doc = new File({
         name: "DetailBlock",
         basedOn: "Normal",
         quickFormat: true,
+      
         paragraph: {
           spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+          indent: { left: 1440, hanging: 980 },
         },
       },
     ],
@@ -167,10 +170,8 @@ const doc = new File({
         }),
         new Paragraph({
           text: "Hey you",
-          numbering: {
-            reference: "my-crazy-numbering",
-            level: 0
-          }
+          style:'DetailBlock'
+          
         }),
         new Paragraph({
           text: "What's up fam",

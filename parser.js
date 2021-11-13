@@ -18,7 +18,6 @@ function parseParagraph(childs, level = 0) {
   
   return childs.content.reduce((a, c) => {
     if (parser[c.type]) {
-      console.log("parser function ", c.type);
       a = [
         ...a,
         ...parser[c.type]({
@@ -29,10 +28,6 @@ function parseParagraph(childs, level = 0) {
       ];
     }
 
-    // switch (c.type) {
-    //   case "run":
-    //     a = [...a, ...parser[c.type]({payload: c.payload, level, meta:c.meta ? c.meta : childs.meta})];
-    // }
     if (c.childs) {
       a = [...a, ...parseParagraph(c.childs, level + 1)];
     }
@@ -42,7 +37,6 @@ function parseParagraph(childs, level = 0) {
 
 function parseParagraph1(childs, level = 0) {
   return new Promise((resolve, reject) => {
-
     resolve([]);
   });
 }
