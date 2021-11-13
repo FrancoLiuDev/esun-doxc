@@ -1,16 +1,10 @@
-const request = require('request').defaults({ encoding: null });
-const download = () => {
-  return new Promise((resolve, reject) => {
-    request.get(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/150px-NewTux.svg.png",
-      function (err, res, body) {
-        resolve(body);
-      }
-    );
-    
-  });
+// const request = require('request').defaults({ encoding: null });
+var request = require("sync-request");
+const download = (url) => {
+  var res = request("GET", url);
+  return res.getBody();
 };
 
 module.exports = {
-    download: download,
+  download: download,
 };

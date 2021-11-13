@@ -18,24 +18,77 @@ const {
 } = require("docx");
 const { download } = require("../images/image");
 function parseRun({ payload, level, meta = {} }) {
+  // const image = new ImageRun({
+  //   data: download(
+  //     "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/150px-NewTux.svg.png"
+  //   ),
+  //   transformation: {
+  //     width: 200,
+  //     height: 200,
+  //   },
+  //   break: 1,
+  // });
 
-   
- 
-  const collections =[]
-  collections.push(
-    new Paragraph({
-      text: payload,
-     　
-      numbering: meta.number
-        ? {
-            reference: meta.number.name,
-            level: level,
-          }
-        : {},
-      style: meta.style,
-    })
-  );
-  console.log("parseRun", payload, level);
+  let collections = [];
+  // collections.push(
+  //   new Paragraph({
+  //     children: [image],
+  //   })
+  // );
+  if (typeof payload === "string") {
+    collections = [
+      new Paragraph({
+        text: payload,
+        numbering: meta.number
+          ? {
+              reference: meta.number.name,
+              level: level,
+            }
+          : {},
+        style: meta.style,
+      }),
+    ];
+  } else {
+    const list = payload.reduce((a, c) => {
+      if (typeof c === "string") {
+        a.push(
+          new Paragraph({
+            text: c.content,
+            numbering: meta.number
+              ? {
+                  reference: meta.number.name,
+                  level: level,
+                }
+              : {},
+            style: meta.style,
+          })
+        );
+      } else {
+        console.log("switch type", c.type);
+        switch (c.type) {
+          case "image":
+            a.push(
+              new Paragraph({
+                children: [
+                  new ImageRun({
+                    data: download(c.content),
+                    transformation: {
+                      width: 200,
+                      height: 200,
+                    },
+                    break: 1,
+                  }),
+                ],
+              })
+            );
+            break;
+        }
+      }
+      return a;
+    }, []);
+
+    collections = [...collections, ...list];
+  }
 
   return collections;
 }

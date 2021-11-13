@@ -14,8 +14,8 @@ const {
 } = require("docx");
 const parser = require("./parser/parsers");
 
-function parseParagraph1(childs, level = 0) {
-  console.log("parseParagraph", level);
+function parseParagraph(childs, level = 0) {
+  
   return childs.content.reduce((a, c) => {
     if (parser[c.type]) {
       console.log("parser function ", c.type);
@@ -40,14 +40,15 @@ function parseParagraph1(childs, level = 0) {
   }, []);
 }
 
-function parseParagraph(childs, level = 0) {
+function parseParagraph1(childs, level = 0) {
   return new Promise((resolve, reject) => {
+
     resolve([]);
   });
 }
 
 module.exports = {
-  parse1: (body) => {
+  parse: (body) => {
     return body.reduce((a, c) => {
       const head = new Paragraph({
         text: c.title,
@@ -64,7 +65,7 @@ module.exports = {
       return a;
     }, []);
   },
-  parse: async (body) => {
+  parse1: async (body) => {
     let collect = [];
     const delayPromise = (data) =>
       new Promise((resolve, reject) => {
@@ -78,11 +79,15 @@ module.exports = {
           heading: HeadingLevel.HEADING_1,
         });
         c.push(head);
-        resolve(c);
+        if (data.childs) {
+          // await parseParagraph(data.childs, 1)
+        }
+        resolve(data.childs ? data.childs : []);
+      }).then((value) => {
+        return parseParagraph(value, 1);
       });
 
     const asyncWay = async (dataArray) => {
-      //,
       for (const i in dataArray) {
         collect = [...collect, ...(await delayPromise(dataArray[i]))];
       }
