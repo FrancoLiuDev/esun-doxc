@@ -48,8 +48,8 @@ function parseRun({ payload, level, meta = {} }) {
               new ImageRun({
                 data: download(c.content),
                 transformation: {
-                  width: 200,
-                  height: 200,
+                  width: c.width,
+                  height: c.height,
                 },
                 break: 1,
               })
@@ -59,7 +59,6 @@ function parseRun({ payload, level, meta = {} }) {
       }
       return a;
     }, []);
-    
     
     collections = [
       new Paragraph({
