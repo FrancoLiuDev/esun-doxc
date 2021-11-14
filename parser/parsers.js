@@ -30,6 +30,7 @@ function parseRun({ payload, level, meta = {} }) {
       new Paragraph({
         style: meta.style,
         heading: meta.heading ? meta.heading : "",
+        alignment: meta.alignment, 
         numbering: meta.number
           ? {
               reference: meta.number.name,
@@ -84,6 +85,7 @@ function parseRun({ payload, level, meta = {} }) {
       new Paragraph({
         heading: meta.heading ? meta.heading : "",
         style: meta.style,
+        alignment: meta.alignment, 
         numbering: meta.number
           ? {
               reference: meta.number.name,
