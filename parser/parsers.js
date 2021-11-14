@@ -66,12 +66,12 @@ function parseRun({ payload, level, meta = {} }) {
           case "string":
             const str = new TextRun({
               text: c.content,
-              size:c.size,
+              size: c.size,
               bold: c.bold,
               font: c.font,
               allCaps: c.allCaps,
               break: c.break,
-              color:c.color,
+              color: c.color,
             });
             a.push(str);
             break;
@@ -151,7 +151,7 @@ function parseTableH({ payload, level, meta = {} }) {
     return new TableRow({
       children: headers.map((h, i) => {
         return new TableCell({
-          // width: { size: 20, type: WidthType.PERCENTAGE },
+           
           shading: {
             fill: i === 0 ? "efefef" : "ffffff",
             color: "000000",
@@ -179,50 +179,28 @@ function parseTableH({ payload, level, meta = {} }) {
 }
 function parseTableFree({ payload, level, meta = {}, param }) {
   const rows = payload.rows;
-  const style = meta.style
-    ? meta.style
-    : {
-        background: "ffffff",
-        color: "ff0000",
-      };
   const tableRows = rows.map((row) => {
     return new TableRow({
       children: row.map((item, i) => {
-        let cellStyle = {};
-        let text = "";
-        if (typeof item === "string") {
-          text = item;
-          cellStyle = style;
-        } else {
-          text = item.text;
-          cellStyle = item.style ? item.style : style;
-        }
-
-        paragraph = new Paragraph({
-          children: [
-            new TextRun({
-              text: text,
-            }),
-          ],
-        });
-
         const cell = param.parser.parse(
           {
             content: [...item.content],
           },
           { parser: param.parser }
         );
-        const cellMeta = item.cell ? item.cell : {};
-        const width = {
-          type: WidthType.DXA,
-        };
-        
+
         return new TableCell({
+          shading: {
+            fill: item.cell.fill ? item.cell.fill:'ffffff',
+            color: "000000",
+          },
           columnSpan: item.cell.columnSpan,
-          width:item.cell.width ? {
-            type: WidthType.DXA,
-            size: item.cell.width
-          }:undefined,
+          width: item.cell.width
+            ? {
+                type: WidthType.DXA,
+                size: item.cell.width,
+              }
+            : undefined,
           children: [...cell],
         });
       }),

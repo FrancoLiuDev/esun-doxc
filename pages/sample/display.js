@@ -1,5 +1,7 @@
 var root = require("app-root-path");
 const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
+const { STYLE_TTABLE_API } = require(root + "/style/table-styleing");
+
 const {
   META_CONTACT_ONEPAGE,
   META_CONTACT_ONE_CHAPTER,
@@ -88,6 +90,7 @@ module.exports = {
                   ],
                 },
               },
+              STYLE_TTABLE_API(),
               {
                 type: "tablefree",
                 meta: {
@@ -128,6 +131,7 @@ module.exports = {
                       {
                         cell: {
                           columnSpan: 2,
+                          fill:'ff0000'
                         },
                         content: [
                           {
@@ -138,6 +142,7 @@ module.exports = {
                                 content: "Franco",
                                 size: 26,
                                 color: "ff0000",
+                                
                               },
                               {
                                 type:'string',
