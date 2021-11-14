@@ -108,24 +108,50 @@ module.exports = {
                       //one col
                       {
                         cell: {
-                          columnSpan:1,
-                           
+                          columnSpan: 1,
                         },
                         content: [
                           {
+                            // meta:{
+                            //   style:'DetailBlockGreen'
+                            // },
                             type: "run",
-                            payload: "grgrgr",
+                            payload: [
+                              {
+                                type:'string',
+                                content: "grgrgg",
+                              },
+                            ],
                           },
                         ],
                       },
                       {
                         cell: {
-                          columnSpan:2
+                          columnSpan: 2,
                         },
                         content: [
                           {
                             type: "run",
-                            payload: "grgrgr",
+                            payload: [
+                              {
+                                type:'string',
+                                content: "Franco",
+                                size: 26,
+                                color: "ff0000",
+                              },
+                              {
+                                type:'string',
+                                content: "Franco",
+                                size: 26,
+                                color: "ff0000",
+                              },
+                            ],
+                            // type:'string',
+                            // size: 26,
+                            // bold: true,
+                            // type: "run",
+                            // payload: "grgrgr",
+                            // color: "ff0000",
                           },
                         ],
                       },
@@ -134,7 +160,7 @@ module.exports = {
                       //one col
                       {
                         cell: {
-                          columnSpan:1
+                          columnSpan: 1,
                         },
                         content: [
                           {
@@ -145,7 +171,7 @@ module.exports = {
                       },
                       {
                         cell: {
-                          columnSpan:1
+                          columnSpan: 1,
                         },
                         content: [
                           {
@@ -156,7 +182,7 @@ module.exports = {
                       },
                       {
                         cell: {
-                          columnSpan:1
+                          columnSpan: 1,
                         },
                         content: [
                           {

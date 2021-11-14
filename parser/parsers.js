@@ -66,10 +66,12 @@ function parseRun({ payload, level, meta = {} }) {
           case "string":
             const str = new TextRun({
               text: c.content,
+              size:c.size,
               bold: c.bold,
               font: c.font,
               allCaps: c.allCaps,
               break: c.break,
+              color:c.color,
             });
             a.push(str);
             break;
