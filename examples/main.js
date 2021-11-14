@@ -32,7 +32,15 @@ const table = new Table({
           },
           children: [
             new Paragraph({
-              children: [new TextRun("payeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeload")],
+              children: [new TextRun({
+                text: 'REVERSE_DIAGONAL_STRIPE',
+                shading: {
+                  // type: ShadingType.REVERSE_DIAGONAL_STRIPE,
+  
+                  color: "ffff00",
+                  
+                },
+              })],
               indent: {
                 left: '1 cm',
                 right: '1 cm',
@@ -279,11 +287,13 @@ const doc = new File({
           },
         }),
         new Paragraph({
-          text: "What's up fam",
-          numbering: {
-            reference: "my-crazy-numbering",
-            level: 2,
-          },
+          text: "shading",
+          shading: {
+              
+              color: "00ff00",
+              fill: "ffffff",
+          }
+           
         }),
         new Paragraph({
            

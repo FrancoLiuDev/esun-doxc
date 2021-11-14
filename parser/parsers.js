@@ -200,18 +200,11 @@ function parseTableFree({ payload, level, meta = {} }) {
           children: [
             new TextRun({
               text: text,
-              shading: {
-                // type: ShadingType.REVERSE_DIAGONAL_STRIPE,
-
-                color: cellStyle.color,
-                fill: cellStyle.background,
-              },
             }),
           ],
         });
 
         return new TableCell({
-          // width: { size: 20, type: WidthType.PERCENTAGE },
           children: [paragraph],
         });
       }),
