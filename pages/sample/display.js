@@ -25,16 +25,37 @@ module.exports = {
           childs: {
             meta: META_CHAPTER_BODY(),
             content: [
-              {
-                meta: META_CHAPTER_BODY_IMG(),
-                type: "run",
-                payload: [IMAGE_UI_FORM(sdUrl + "手續費/手續費查詢.png")],
-              },
-
-              // ...STRING_RUN_BLOCK_ARRAY_LIST(
-              //   `image:手續費/手續費查詢.png
-              //   ffefefefefef`
-              // ),
+              // {
+              //   meta: META_CHAPTER_BODY_IMG(),
+              //   type: "run",
+              //   payload: [IMAGE_UI_FORM(sdUrl + "手續費/手續費查詢.png")],
+              // },
+              // {
+              //   "type": "run",
+              //   "payload": [
+              //     {
+              //       "type": "image",
+              //       "meta": {
+              //         "style": "sd-descripion-body-image"
+              //       },
+              //       "content": "http://localhost:3000/getfile?file=手續費/手續費查詢.png",
+              //       "width": 600
+              //     }
+              //   ]
+              // },
+              ...STRING_RUN_BLOCK_ARRAY_LIST(
+                `ffefefefefef
+                fefefefefefefeffe
+                image:手續費/手續費查詢.png
+                fefefefe
+                feffeff`,
+                {
+                  image: {
+                    meta: META_CHAPTER_BODY_IMG(),
+                    width: 600,
+                  },
+                }
+              ),
               {
                 type: "tableh",
                 payload: {

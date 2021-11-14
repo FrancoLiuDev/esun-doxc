@@ -1,17 +1,39 @@
 module.exports = {
-  STRING_RUN_BLOCK_ARRAY_LIST: (str) => {
-    const strList =str.split("\n").map((s,i) =>{
-      
-      return s.trim().startsWith('image:') ?  {type:'image',content:`http://localhost:3000/getfile?file=${s.trim().slice(6)}`, width:600, break: i === 0 ? 0:1 } :{ type: "string", content: s.trim(), break: i === 0 ? 0:1 }
-    });
-    console.log('STRING_RUN_BLOCK_ARRAY_LIST',strList)
+  STRING_RUN_BLOCK_ARRAY_LIST: (str, options = {}) => {
+    const strList = str.split("\n");
+    const image = options.image ? options.image : {};
+    const paragraphs = strList.reduce((a, s) => {
+      if (!a.length | (s.trim().length === 0) | s.trim().startsWith("image:")) {
+        a.push({
+          type: "run",
+          payload: [],
+        });
+      }
+      const last = a[a.length - 1];
+      if (s.trim().length) {
+        if (s.trim().startsWith("image:")) {
+          (last.meta = image.meta),
+            last.payload.push({
+              type: "image",
+              content: `http://localhost:3000/getfile?file=${s.trim().slice(6)}`,
+              width: 600,
+            });
+          a.push({
+            type: "run",
+            payload: [],
+          });
+        } else {
+          last.payload.push({
+            type: "string",
+            content: s.trim(),
+            break: last.payload.length === 0 ? 0 : 1,
+          });
+        }
+      }
+      return a;
+    }, []);
+    console.log("STRING_RUN_BLOCK_ARRAY_LIST", JSON.stringify(paragraphs));
 
-    return [
-      {
-        type: "run",
-        payload: [...strList],
-      },
-      
-    ];
+    return paragraphs;
   },
 };

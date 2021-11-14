@@ -17,13 +17,19 @@ const parser = require("./parser/parsers");
 function parseParagraph(childs, level = 0) {
   
   return childs.content.reduce((a, c) => {
+    
+    console.log('meta',c.type )
+    if (c.type === 'image'){
+      console.log('meta',JSON.stringify(c) )
+    }
     if (parser[c.type]) {
       a = [
         ...a,
         ...parser[c.type]({
           payload: c.payload,
           level,
-          meta: c.meta ? {...childs.meta,...c.meta} : childs.meta,
+          meta: c.meta ? { ...childs.meta, ...c.meta } : childs.meta,
+          // meta: c.meta ? c.meta: childs.meta,
         }),
       ];
     }
@@ -60,8 +66,8 @@ module.exports = {
     }, []);
   },
   parse: (body) => {
-    console.log('body', body)
-    return [...parseParagraph(body)]
+    console.log("body", body);
+    return [...parseParagraph(body)];
 
     // return body.reduce((a, c) => {
     //   const head = new Paragraph({

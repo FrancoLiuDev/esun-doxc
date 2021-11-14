@@ -24,10 +24,10 @@ module.exports = {
           childs: {
             meta: META_CHAPTER_BODY(),
             content: [
-              ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `image:手續費/手續費查詢.png
-                ffefefefefef`
-              ),
+              // ...STRING_RUN_BLOCK_ARRAY_LIST(
+              //   `image:手續費/手續費查詢.png
+              //   ffefefefefef`
+              // ),
             ],
           },
         },

@@ -77,7 +77,9 @@ function parseRun({ payload, level, meta = {} }) {
       }
       return a;
     }, []);
+    
 
+    
     collections = [
       new Paragraph({
         heading: meta.heading ? meta.heading : "",
