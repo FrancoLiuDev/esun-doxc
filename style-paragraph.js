@@ -22,7 +22,7 @@ module.exports = {
       quickFormat: true,
       paragraph: {
         spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
-        indent: { left: 250, hanging: 0 },
+        // indent: { left: 250, hanging: 0 },
       },
     },
     {
@@ -32,6 +32,15 @@ module.exports = {
       quickFormat: true,
       paragraph: {
         spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+        indent: { left: convertInchesToTwip(0.4), hanging: 0 },
+      },
+    },
+    {
+      id: "sd-descripion-body-image",
+      name: "sd-descripion-body-image",
+      basedOn: "Normal",
+      quickFormat: true,
+      paragraph: {
         indent: { left: convertInchesToTwip(0.4), hanging: 0 },
       },
     },

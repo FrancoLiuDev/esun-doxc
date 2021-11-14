@@ -9,9 +9,87 @@ const {
   UnderlineType,
   AlignmentType,
   TextRun,
+  TableRow,
+  TableCell,
+  WidthType,
+  Table,
+  ImageRun,
+  HorizontalPositionRelativeFrom,
+  VerticalPositionRelativeFrom,
   convertInchesToTwip,
 } = require("docx");
 const fs = require("fs");
+const { download } = require("../images/image");
+const table = new Table({
+  columnWidths: [3505, 5505],
+  rows: [
+    new TableRow({
+      children: [
+        new TableCell({
+          width: {
+            size: 3505,
+            type: WidthType.DXA,
+          },
+          children: [
+            new Paragraph({
+              children: [new TextRun("payeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeload")],
+              indent: {
+                left: '1 cm',
+                right: '1 cm',
+
+                // firstLine: convertInchesToTwip(0),
+              },
+            }),
+          ],
+        }),
+        new TableCell({
+          width: {
+            size: 5505,
+            type: WidthType.DXA,
+          },
+          children: [],
+        }),
+      ],
+    }),
+    new TableRow({
+      children: [
+        new TableCell({
+          width: {
+            size: 3505,
+            type: WidthType.DXA,
+          },
+          children: [],
+        }),
+        new TableCell({
+          width: {
+            size: 5505,
+            type: WidthType.DXA,
+          },
+          children: [new Paragraph("World")],
+        }),
+      ],
+    }),
+  ],
+});
+const img = download("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/150px-NewTux.svg.png");
+const image = new ImageRun({
+  data: img.buffer,
+  // data: fs.readFileSync("./sample.png"),
+  transformation: {
+      width: 200,
+      height: 200,
+  },
+  // floating: {
+  //     horizontalPosition: {
+  //         relative: HorizontalPositionRelativeFrom.RIGHT_MARGIN,
+  //         offset: 1014400,
+  //     },
+  //     verticalPosition: {
+  //         relative: VerticalPositionRelativeFrom.BOTTOM_MARGIN,
+  //         offset: 1014400,
+  //     },
+  // },
+});
 
 const doc = new File({
   features: {
@@ -153,8 +231,7 @@ const doc = new File({
         // next: "Heading1",
         quickFormat: true,
         paragraph: {
-           
-          indent: { left: convertInchesToTwip(3)  },
+          indent: { left: convertInchesToTwip(3) },
         },
 
         run: {
@@ -183,18 +260,19 @@ const doc = new File({
           headingStyleRange: "1-5",
           stylesWithLevels: [new StyleLevel("MySpectacularStyle", 1)],
         }),
-        // new Paragraph({
-
-        //   numbering: {
-        //     reference: "my-crazy-numbering",
-        //     level: 0
-        //   },
-
-        //   children: [new TextRun('Hey you')],
-        // }),
+         
         new Paragraph({
           text: "Hey you",
 
+          numbering: {
+            reference: "my-crazy-numbering",
+            level: 1,
+          },
+        }),
+        
+        new Paragraph({
+          text: "Hey you",
+            
           numbering: {
             reference: "my-crazy-numbering",
             level: 1,
@@ -208,15 +286,14 @@ const doc = new File({
           },
         }),
         new Paragraph({
-          style: "Normaltext",
+           
           children: [
+            image,
             new TextRun({
               text: "Name:",
               bold: true,
               font: "Calibri",
               allCaps: true,
-
-               
             }),
             new TextRun({
               text: "Name:",

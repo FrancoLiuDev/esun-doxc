@@ -45,15 +45,14 @@ module.exports = {
     {
       level: 1,
       format: "decimal",
-      text: "%2.",
+      text: "(%2)",
       alignment: AlignmentType.START,
       style: {
         paragraph: {
+          spacing: { line: 250, before: 420, after: 200 },
           indent: {
-            left: convertInchesToTwip(0.4),
-            // right: convertInchesToTwip(0.18),
-            hanging: convertInchesToTwip(0.18),
-            // firstLine: convertInchesToTwip(0),
+            hanging: "0.6 cm",
+            left: "1.3 cm",
           },
         },
       },
@@ -61,14 +60,14 @@ module.exports = {
     {
       level: 2,
       format: "decimal",
-      text: "%3.",
+      text: "%3",
       alignment: AlignmentType.START,
       style: {
         paragraph: {
           indent: {
             left: convertInchesToTwip(1),
             // right: convertInchesToTwip(0.18),
-            hanging: convertInchesToTwip(0.18),
+            hanging: convertInchesToTwip(0.3),
             // firstLine: convertInchesToTwip(0),
           },
         },

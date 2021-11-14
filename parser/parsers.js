@@ -9,6 +9,7 @@ const {
   AlignmentType,
   TextRun,
   UnderlineType,
+  WidthType,
   ImageRun,
   Table,
   TableRow,
@@ -28,6 +29,7 @@ function parseRun({ payload, level, meta = {} }) {
     collections = [
       new Paragraph({
         style: meta.style,
+        heading: meta.heading ? meta.heading : "",
         numbering: meta.number
           ? {
               reference: meta.number.name,
@@ -61,14 +63,14 @@ function parseRun({ payload, level, meta = {} }) {
               })
             );
             break;
-          case 'string':
+          case "string":
             const str = new TextRun({
               text: c.content,
               bold: c.bold,
               font: c.font,
               allCaps: c.allCaps,
               break: c.break,
-            })
+            });
             a.push(str);
             break;
         }
@@ -78,6 +80,7 @@ function parseRun({ payload, level, meta = {} }) {
 
     collections = [
       new Paragraph({
+        heading: meta.heading ? meta.heading : "",
         style: meta.style,
         numbering: meta.number
           ? {
@@ -96,6 +99,7 @@ function parseRun({ payload, level, meta = {} }) {
 function parseTable({ payload, level, meta = {} }) {
   const headers = payload.headers;
   const rows = payload.rows;
+
   const tableCellHeaders = headers.map((h) => {
     return new TableCell({
       shading: {
@@ -118,7 +122,6 @@ function parseTable({ payload, level, meta = {} }) {
   });
 
   const table = new Table({
-    columnWidths: [3505, 5505],
     rows: [
       new TableRow({
         children: tableCellHeaders,
@@ -129,7 +132,44 @@ function parseTable({ payload, level, meta = {} }) {
   return [table];
 }
 
+function parseTableH({ payload, level, meta = {} }) {
+  const headers = payload.headers;
+  const rows = payload.rows;
+
+  const tableRows = rows.map((r) => {
+    return new TableRow({
+      children: headers.map((h, i) => {
+        return new TableCell({
+          // width: { size: 20, type: WidthType.PERCENTAGE },
+          shading: {
+            fill: i === 0 ? "efefef" : "ffffff",
+            color: "000000",
+          },
+          children: [new Paragraph(r[h.key] ? r[h.key] : "N/A")],
+        });
+      }),
+    });
+  });
+
+  const table = new Table({
+    width: {
+      size: 9000,
+      type: WidthType.DXA,
+    },
+    
+    columnWidths: [
+      3000,
+      3000,
+      3000,
+    ],
+
+    rows: [...tableRows],
+  });
+  return [table];
+}
+
 module.exports = {
   run: parseRun,
   table: parseTable,
+  tableh: parseTableH,
 };

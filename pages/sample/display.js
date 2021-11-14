@@ -1,60 +1,64 @@
-var root = require('app-root-path');
+var root = require("app-root-path");
 const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
-const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root + "/style/run-string-style");
-
+const {
+  META_CONTACT_ONEPAGE,
+  META_CONTACT_ONE_CHAPTER,
+  META_CHAPTER_INDEX,
+  META_CHAPTER_BODY,
+  META_CHAPTER_BODY_IMG,
+} = require(root + "/style/sd-content-meta");
+const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
+  "/style/run-string-style");
+const { sdUrl } = require(root + "/images/image");
 module.exports = {
-  UIDESIGN:  {
+  UIDESIGN: {
     type: "run",
     payload: "畫面設計",
-    meta: {
-      style: "sd-descripion-header",
-      number: {
-        name: "number-sd-design-index",
-      },
-    },
+    meta: META_CONTACT_ONEPAGE(),
     childs: {
-      meta: {
-        style: "sd-descripion-body",
-        number: {
-          name: "number-sd-design-index",
-        },
-      },
+      meta: META_CONTACT_ONE_CHAPTER(),
       content: [
         {
           type: "run",
-          payload: "fefefef",
-          meta: {
-            style: "sd-descripion-body",
-            number: {
-              name: "number-sd-design-index",
-            },
-          },
+          payload: "查詢主畫面",
+          meta: META_CHAPTER_INDEX(),
           childs: {
-            meta: {
-              style: "sd-descripion-body",
-            },
+            meta: META_CHAPTER_BODY(),
             content: [
-              { type: "run", payload: ["grgrgrg"] },
               {
+                meta: META_CHAPTER_BODY_IMG(),
                 type: "run",
-                payload: [
-                  // encodeURI("http://localhost:3000/getfile?file=手續費/手續費查詢.png")
-                  IMAGE_UI_FORM(
-                    "https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
-                  ),
-                ],
+                payload: [IMAGE_UI_FORM(sdUrl + "手續費/手續費查詢.png")],
+              },
+
+              // ...STRING_RUN_BLOCK_ARRAY_LIST(
+              //   `image:手續費/手續費查詢.png
+              //   ffefefefefef`
+              // ),
+              {
+                type: "tableh",
+                payload: {
+                  headers: [
+                    { label: "text", key: "row1" },
+                    { label: "row2", key: "row2" },
+                    { label: "row3", key: "row3" },
+                  ],
+                  rows: [
+                    {
+                      row1: "grgrgffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                    },
+                    { row1: "grgrg" },
+                    { row1: "grgrg" },
+                    { row1: "grgrg" },
+                    { row1: "grgrg" },
+                    { row1: "grgrg" },
+                  ],
+                },
               },
             ],
           },
         },
-        ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `grgrgrgrg
-          grgrgrgrgrgrgrgrgr`
-        ),
-
-        { type: "run", payload: "grgrgrg" },
       ],
     },
-  }
-   
+  },
 };

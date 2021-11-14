@@ -30,11 +30,30 @@ const {
         },
         heading2: {
           run: {
+            size: 24,
+            bold: true,
+            color: "000000",  
+          },
+          paragraph: {
+            spacing: {
+              before: 50,
+              after: 80,
+            },
+           
+            indent: {
+              left: 100,
+              hanging: 100,
+              firstLine: 0,
+            },
+          },
+        },
+        heading3: {
+          run: {
             size: 26,
             bold: true,
             underline: {
               type: UnderlineType.DOUBLE,
-              color: "FF0000",
+              color: "000000",
             },
           },
           paragraph: {

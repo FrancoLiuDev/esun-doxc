@@ -62,8 +62,12 @@ async function gen() {
       sections: [
         {
           children: [
+            
             new TableOfContents("文件目錄", {
               hyperlink: true,
+              
+              headingStyleRange: "1-5",
+              stylesWithLevels: [new StyleLevel("MySpectacularStyle", 1)],
             }),
             ...bodys,
           ],
