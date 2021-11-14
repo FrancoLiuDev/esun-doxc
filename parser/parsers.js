@@ -203,14 +203,24 @@ function parseTableFree({ payload, level, meta = {}, param }) {
             }),
           ],
         });
+
         const cell = param.parser.parse(
           {
-            content: [...item],
+            content: [...item.content],
           },
           { parser: param.parser }
         );
-
+        const cellMeta = item.cell ? item.cell : {};
+        const width = {
+          type: WidthType.DXA,
+        };
+        
         return new TableCell({
+          columnSpan: item.cell.columnSpan,
+          width:item.cell.width ? {
+            type: WidthType.DXA,
+            size: item.cell.width
+          }:undefined,
           children: [...cell],
         });
       }),

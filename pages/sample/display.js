@@ -103,13 +103,68 @@ module.exports = {
                 },
                 payload: {
                   rows: [
+                    //one row
                     [
-                      [
-                        {
-                          type: "run",
-                          payload: "grgrgr",
+                      //one col
+                      {
+                        cell: {
+                          columnSpan:1,
+                           
                         },
-                      ],
+                        content: [
+                          {
+                            type: "run",
+                            payload: "grgrgr",
+                          },
+                        ],
+                      },
+                      {
+                        cell: {
+                          columnSpan:2
+                        },
+                        content: [
+                          {
+                            type: "run",
+                            payload: "grgrgr",
+                          },
+                        ],
+                      },
+                    ],
+                    [
+                      //one col
+                      {
+                        cell: {
+                          columnSpan:1
+                        },
+                        content: [
+                          {
+                            type: "run",
+                            payload: "grgrgr",
+                          },
+                        ],
+                      },
+                      {
+                        cell: {
+                          columnSpan:1
+                        },
+                        content: [
+                          {
+                            type: "run",
+                            payload: "grgrgr",
+                          },
+                        ],
+                      },
+                      {
+                        cell: {
+                          columnSpan:1
+                        },
+                        content: [
+                          {
+                            type: "run",
+                            payload: "grgrgr",
+                          },
+                        ],
+                      },
                     ],
                   ],
                 },
