@@ -77,9 +77,7 @@ function parseRun({ payload, level, meta = {} }) {
       }
       return a;
     }, []);
-    
 
-    
     collections = [
       new Paragraph({
         heading: meta.heading ? meta.heading : "",
@@ -124,6 +122,15 @@ function parseTable({ payload, level, meta = {} }) {
   });
 
   const table = new Table({
+    width: {
+      size: meta.width,
+      type: WidthType.DXA,
+    },
+    indent: {
+      size: meta.indent.size,
+      type: WidthType.DXA,
+    },
+    columnWidths: meta.columnWidths,
     rows: [
       new TableRow({
         children: tableCellHeaders,
@@ -155,23 +162,79 @@ function parseTableH({ payload, level, meta = {} }) {
 
   const table = new Table({
     width: {
-      size: 9000,
+      size: meta.width,
       type: WidthType.DXA,
     },
-    
-    columnWidths: [
-      3000,
-      3000,
-      3000,
-    ],
+    indent: {
+      size: meta.indent.size,
+      type: WidthType.DXA,
+    },
+    columnWidths: meta.columnWidths,
 
     rows: [...tableRows],
   });
   return [table];
 }
+function parseTableFree({ payload, level, meta = {} }) {
+  const rows = payload.rows;
+  const style = meta.style
+    ? meta.style
+    : {
+        background: "ffffff",
+        color: "ff0000",
+      };
+  const tableRows = rows.map((row) => {
+    return new TableRow({
+      children: row.map((item, i) => {
+        let cellStyle = {};
+        let text = "";
+        if (typeof item === "string") {
+          text = item;
+          cellStyle = style;
+        } else {
+          text = item.text;
+          cellStyle = item.style ? item.style : style;
+        }
 
+        paragraph = new Paragraph({
+          children: [
+            new TextRun({
+              text: text,
+              shading: {
+                // type: ShadingType.REVERSE_DIAGONAL_STRIPE,
+
+                color: cellStyle.color,
+                fill: cellStyle.background,
+              },
+            }),
+          ],
+        });
+
+        return new TableCell({
+          // width: { size: 20, type: WidthType.PERCENTAGE },
+          children: [paragraph],
+        });
+      }),
+    });
+  });
+
+  const table = new Table({
+    width: {
+      size: meta.width,
+      type: WidthType.DXA,
+    },
+    indent: {
+      size: meta.indent.size,
+      type: WidthType.DXA,
+    },
+    columnWidths: meta.columnWidths,
+    rows: [...tableRows],
+  });
+  return [table];
+}
 module.exports = {
   run: parseRun,
   table: parseTable,
   tableh: parseTableH,
+  tablefree: parseTableFree,
 };

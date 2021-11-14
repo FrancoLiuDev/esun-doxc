@@ -1,5 +1,5 @@
 const block = require("./pages/sample/index.js");
- 
+
 const {
   File,
   HeadingLevel,
@@ -18,20 +18,21 @@ const {
   WidthType,
   ShadingType,
   Numbering,
+  Header,
+  Footer,
   convertInchesToTwip,
 } = require("docx");
 
- 
 const fs = require("fs");
 const levels = require("./style-levels");
 const styleDefault = require("./style-default");
 const styleParagraph = require("./style-paragraph");
-const parser= require("./parser");
+const parser = require("./parser");
 const { download } = require("./images/image");
-  
+
 async function gen() {
   try {
-    const bodys  =   parser.parse(block.body)
+    const bodys = parser.parse(block.body);
     // console.log('bodys', bodys)
     // const image = new ImageRun({
     //   data: await download(),
@@ -52,7 +53,6 @@ async function gen() {
             levels: levels.DECIMAL_START,
             reference: "number-sd-design-index",
           },
-          
         ],
       },
       styles: {
@@ -61,11 +61,20 @@ async function gen() {
       },
       sections: [
         {
+          headers: {
+            default: new Header({
+              children: [new Paragraph("Header text")],
+            }),
+          },
+          footers: {
+            default: new Footer({
+              children: [new Paragraph("Footer text")],
+            }),
+          },
           children: [
-            
             new TableOfContents("文件目錄", {
               hyperlink: true,
-              
+
               headingStyleRange: "1-5",
               stylesWithLevels: [new StyleLevel("MySpectacularStyle", 1)],
             }),
@@ -74,9 +83,8 @@ async function gen() {
         },
       ],
     });
-  
+
     Packer.toBuffer(doc).then((buffer) => {
-     
       fs.writeFileSync("My Document.docx", buffer);
     });
   } catch (error) {
@@ -85,20 +93,18 @@ async function gen() {
 }
 gen();
 
-
-
 // new Paragraph({
 //   children: [
 //     new TextRun({
 //       text: "break",
-      
+
 //     }),
 //     new TextRun({
 //       text: "break",
 //       break: 1,
 //     }),
 //     new TextRun({
-      
+
 //       break: 1,
 //     }),
 //     image,

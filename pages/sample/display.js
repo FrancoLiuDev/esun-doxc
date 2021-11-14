@@ -6,6 +6,7 @@ const {
   META_CHAPTER_INDEX,
   META_CHAPTER_BODY,
   META_CHAPTER_BODY_IMG,
+  META_CHAPTER_TABLE,
 } = require(root + "/style/sd-content-meta");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
@@ -57,6 +58,13 @@ module.exports = {
                 }
               ),
               {
+                meta: {
+                  ...META_CHAPTER_TABLE(),
+                  ...{
+                    width: 9000,
+                    columnWidths: [1000, 3000, 3000],
+                  },
+                },
                 type: "tableh",
                 payload: {
                   headers: [
@@ -66,13 +74,48 @@ module.exports = {
                   ],
                   rows: [
                     {
-                      row1: "grgrgffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                      row1: `grgrgff
+                      ffffffffffffff
+                      ffffffffffffff
+                      ffffffffffffffff
+                      ffffffffffffffffffffffffffffffffffffffffffff`,
                     },
                     { row1: "grgrg" },
                     { row1: "grgrg" },
                     { row1: "grgrg" },
                     { row1: "grgrg" },
                     { row1: "grgrg" },
+                  ],
+                },
+              },
+              {
+                type: "tablefree",
+                meta: {
+                  ...META_CHAPTER_TABLE(),
+                  ...{
+                    width: 9000,
+                    columnWidths: [1000, 3000, 3000],
+                  },
+                  style: {
+                    background: "ffffff",
+                    color: "000000",
+                  },
+                },
+                payload: {
+                  rows: [
+                    [
+                      {
+                        text: "我的中文沒變色",
+                        style: {
+                          background: "ffffff",
+                          color: "ffffff",
+                        },
+                        colSpan: "",
+                        rowSpan: "",
+                      },
+                      "fefefefe",
+                      "vdvdvvd",
+                    ],
                   ],
                 },
               },

@@ -27,6 +27,14 @@ module.exports = {
       style: "sd-descripion-body",
     };
   },
+  META_CHAPTER_TABLE: () => {
+    return  {
+     
+      indent: {
+        size: 600,
+      },
+    };
+  },
   META_CHAPTER_BODY_IMG: () => {
     return  {
       style: "sd-descripion-body-image",
