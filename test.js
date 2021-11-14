@@ -7,4 +7,4 @@ var dimensions = sizeOf(imag)
 console.log('imag', dimensions)
 rggrgr
 ss
-ss
+ss一一一直
