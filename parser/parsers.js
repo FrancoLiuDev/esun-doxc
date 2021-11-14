@@ -175,7 +175,7 @@ function parseTableH({ payload, level, meta = {} }) {
   });
   return [table];
 }
-function parseTableFree({ payload, level, meta = {} }) {
+function parseTableFree({ payload, level, meta = {}, param }) {
   const rows = payload.rows;
   const style = meta.style
     ? meta.style
@@ -203,9 +203,15 @@ function parseTableFree({ payload, level, meta = {} }) {
             }),
           ],
         });
+        const cell = param.parser.parse(
+          {
+            content: [...item],
+          },
+          { parser: param.parser }
+        );
 
         return new TableCell({
-          children: [paragraph],
+          children: [...cell],
         });
       }),
     });

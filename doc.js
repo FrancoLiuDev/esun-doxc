@@ -32,7 +32,7 @@ const { download } = require("./images/image");
 
 async function gen() {
   try {
-    const bodys = parser.parse(block.body);
+    const bodys = parser.parse(block.body ,{parser:parser});
     // console.log('bodys', bodys)
     // const image = new ImageRun({
     //   data: await download(),

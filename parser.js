@@ -14,11 +14,12 @@ const {
 } = require("docx");
 const parser = require("./parser/parsers");
 
-function parseParagraph(childs, level = 0) {
-  
+
+function parseParagraph(childs, level = 0, param = {}) {
+   
   return childs.content.reduce((a, c) => {
     
-    console.log('meta',c.type )
+   
     if (c.type === 'image'){
       console.log('meta',JSON.stringify(c) )
     }
@@ -29,13 +30,14 @@ function parseParagraph(childs, level = 0) {
           payload: c.payload,
           level,
           meta: c.meta ? { ...childs.meta, ...c.meta } : childs.meta,
+          param
           // meta: c.meta ? c.meta: childs.meta,
         }),
       ];
     }
 
     if (c.childs) {
-      a = [...a, ...parseParagraph(c.childs, level + 1)];
+      a = [...a, ...parseParagraph(c.childs, level + 1,param) ];
     }
     return a;
   }, []);
@@ -65,9 +67,9 @@ module.exports = {
       return a;
     }, []);
   },
-  parse: (body) => {
-    console.log("body", body);
-    return [...parseParagraph(body)];
+  parse: (body,{parser}) => {
+    console.log("body", body,parser);
+    return [...parseParagraph(body,0,{parser:parser})];
 
     // return body.reduce((a, c) => {
     //   const head = new Paragraph({

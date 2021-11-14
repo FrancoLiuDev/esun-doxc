@@ -104,17 +104,12 @@ module.exports = {
                 payload: {
                   rows: [
                     [
-                      {
-                        text: "我的中文沒變色",
-                        style: {
-                          background: "ffffff",
-                          color: "ffffff",
+                      [
+                        {
+                          type: "run",
+                          payload: "grgrgr",
                         },
-                        colSpan: "",
-                        rowSpan: "",
-                      },
-                      "fefefefe",
-                      "vdvdvvd",
+                      ],
                     ],
                   ],
                 },
