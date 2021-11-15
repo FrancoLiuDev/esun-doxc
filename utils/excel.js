@@ -77,7 +77,7 @@ const getSheetTables = ({ sheet }) => {
     number++;
   }
 
-  console.log("collector", collector);
+   
   return {};
 };
 

@@ -1,4 +1,4 @@
-const block = require("./pages/sample/index.js");
+
 var root = require("app-root-path");
 const {
   File,
@@ -30,7 +30,7 @@ const levels = require("./style-levels");
 const styleDefault = require("./style-default");
 const styleParagraph = require("./style-paragraph");
 const parser = require("./parser");
-
+const block = require("./pages/sample/index.js");
 // require("./download.js");
 
  

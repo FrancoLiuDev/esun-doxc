@@ -12,7 +12,8 @@ const {
 } = require(root + "/style/sd-content-meta");
 
 module.exports = {
-  STYLE_TABLE_UI_DESCRIPTION: () => {
+  STYLE_TABLE_UI_DESCRIPTION: ({data}) => {
+    console.log('STYLE_TABLE_UI_DESCRIPTION', data)
     return {
       meta: {
         ...META_CHAPTER_TABLE(),

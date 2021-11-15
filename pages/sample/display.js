@@ -1,12 +1,14 @@
 var root = require("app-root-path");
 const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
-const { STYLE_TABLE_API ,STYLE_TABLE_UI_DESCRIPTION,STYLE_TABLE_UI_FIELD_DESCRIPTION,STYLE_TABLE_UI_BUTTON_DESCRIPTION} = require(root + "/style/table-styleing");
-const {getSheetTables} = require(root + "/utils/excel");
+const {
+  STYLE_TABLE_API,
+  STYLE_TABLE_UI_DESCRIPTION,
+  STYLE_TABLE_UI_FIELD_DESCRIPTION,
+  STYLE_TABLE_UI_BUTTON_DESCRIPTION,
+} = require(root + "/style/table-styleing");
+const { getSheetTables } = require(root + "/utils/excel");
 const xl = require("xlsx");
- 
 const workbook = xl.readFile("./downloads/手續費.xlsx");
-const sheetTables = getSheetTables({sheet:workbook.Sheets['Sheet1']})
-
 const {
   META_CONTACT_ONEPAGE,
   META_CONTACT_ONE_CHAPTER,
@@ -17,7 +19,7 @@ const {
 } = require(root + "/style/sd-content-meta");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
- 
+
 module.exports = {
   UIDESIGN: {
     type: "run",
@@ -35,10 +37,10 @@ module.exports = {
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
                 `ffefefefefef
-                fefefefefefefeffe
-                image:photo/手續費/手續費查詢.png
-                fefefefe
-                feffeff`,
+              fefefefefefefeffe
+              image:photo/手續費/手續費查詢.png
+              fefefefe
+              feffeff`,
                 {
                   image: {
                     meta: META_CHAPTER_BODY_IMG(),
@@ -47,7 +49,9 @@ module.exports = {
                 }
               ),
               // STYLE_TABLE_API(),
-              STYLE_TABLE_UI_DESCRIPTION(),
+              STYLE_TABLE_UI_DESCRIPTION({
+                data: workbook.Sheets["Sheet1"],
+              }),
               // STYLE_TABLE_UI_FIELD_DESCRIPTION(),
               // STYLE_TABLE_UI_BUTTON_DESCRIPTION()
             ],
@@ -55,5 +59,5 @@ module.exports = {
         },
       ],
     },
-  },
+  }
 };
