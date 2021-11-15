@@ -1,7 +1,7 @@
 // const request = require('request').defaults({ encoding: null });
 var request = require("sync-request");
 var sizeOf = require("buffer-image-size");
-
+const fs = require("fs");
 const downloadImage = (url) => {
   var res = request("GET", encodeURI(url));
   const buffer = res.getBody();
@@ -14,10 +14,8 @@ const downloadFile = (url, fileName) => {
   var res = request("GET", encodeURI(url));
   const buffer = res.getBody();
   console.log('buffer', buffer)
-  return {
-    buffer: buffer,
+  fs.writeFileSync(fileName, buffer);
    
-  };
 };
 module.exports = {
   downloadImage: downloadImage,
