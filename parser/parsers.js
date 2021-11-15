@@ -30,7 +30,7 @@ function parseRun({ payload, level, meta = {} }) {
       new Paragraph({
         style: meta.style,
         heading: meta.heading ? meta.heading : "",
-        alignment: meta.alignment, 
+        alignment: meta.alignment,
         numbering: meta.number
           ? {
               reference: meta.number.name,
@@ -85,7 +85,7 @@ function parseRun({ payload, level, meta = {} }) {
       new Paragraph({
         heading: meta.heading ? meta.heading : "",
         style: meta.style,
-        alignment: meta.alignment, 
+        alignment: meta.alignment,
         numbering: meta.number
           ? {
               reference: meta.number.name,
@@ -100,26 +100,50 @@ function parseRun({ payload, level, meta = {} }) {
   return collections;
 }
 
-function parseTable({ payload, level, meta = {} }) {
+function parseTable({ payload, level, meta = {}, param }) {
   const headers = payload.headers;
   const rows = payload.rows;
 
   const tableCellHeaders = headers.map((h) => {
+    const cell =
+      typeof h.label === "string"
+        ? [new Paragraph(h.label)]
+        : param.parser.parse(
+            {
+              content: [...h.label.content],
+            },
+            { parser: param.parser }
+          );
+
     return new TableCell({
       shading: {
         fill: "eeeeee",
         type: ShadingType.REVERSE_DIAGONAL_STRIPE,
         color: "000000",
       },
-      children: [new Paragraph(h.label)],
+      children: [...cell],
     });
   });
 
   const tableRows = rows.map((r) => {
     return new TableRow({
       children: headers.map((h) => {
+        let field = r[h.key];
+
+        if (!field || typeof field === "string" && !field) {
+          field = "N/A";
+        }
+        const cell =
+          typeof field === "string"
+            ? [new Paragraph(field)]
+            : param.parser.parse(
+                {
+                  content: [...field.content],
+                },
+                { parser: param.parser }
+              );
         return new TableCell({
-          children: [new Paragraph(r[h.key] ? r[h.key] : "N/A")],
+          children: [...cell],
         });
       }),
     });
@@ -145,20 +169,32 @@ function parseTable({ payload, level, meta = {} }) {
   return [table];
 }
 
-function parseTableH({ payload, level, meta = {} }) {
+function parseTableH({ payload, level, meta = {}, param }) {
   const headers = payload.headers;
   const rows = payload.rows;
 
   const tableRows = rows.map((r) => {
     return new TableRow({
       children: headers.map((h, i) => {
+        let field = r[h.key];
+        if (typeof field === "string" && !field) {
+          field = "N/A";
+        }
+        const cell =
+          typeof field === "string"
+            ? [new Paragraph(field)]
+            : param.parser.parse(
+                {
+                  content: [...field.content],
+                },
+                { parser: param.parser }
+              );
         return new TableCell({
-           
           shading: {
             fill: i === 0 ? "efefef" : "ffffff",
             color: "000000",
           },
-          children: [new Paragraph(r[h.key] ? r[h.key] : "N/A")],
+          children: [...cell],
         });
       }),
     });
@@ -193,7 +229,7 @@ function parseTableFree({ payload, level, meta = {}, param }) {
 
         return new TableCell({
           shading: {
-            fill: item.cell.fill ? item.cell.fill:'ffffff',
+            fill: item.cell.fill ? item.cell.fill : "ffffff",
             color: "000000",
           },
           columnSpan: item.cell.columnSpan,

@@ -12,7 +12,7 @@ const {
 } = require(root + "/style/sd-content-meta");
 
 module.exports = {
-  STYLE_TTABLE_API: () => {
+  STYLE_TABLE_API: () => {
     return {
       type: "tablefree",
       meta: {
@@ -31,7 +31,7 @@ module.exports = {
           [
             {
               cell: {
-                columnSpan: 3,
+                columnSpan: 4,
                 fill: "bfbfbf",
               },
               content: [
@@ -94,6 +94,30 @@ module.exports = {
                     {
                       type: "string",
                       content: "資料型態",
+                      size: '11 pt',
+                      bold: true,
+                      color: "000000",
+                      font: "Bitstream Vera Sans",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              cell: {
+                columnSpan: 1,
+                fill: "ddd9c3",
+              },
+              content: [
+                {
+                  meta: {
+                    alignment: AlignmentType.CENTER,
+                  },
+                  type: "run",
+                  payload: [
+                    {
+                      type: "string",
+                      content: "邏輯",
                       size: '11 pt',
                       bold: true,
                       color: "000000",

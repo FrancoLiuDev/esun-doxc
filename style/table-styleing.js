@@ -1,10 +1,14 @@
 var root = require("app-root-path");
  
-const {STYLE_TTABLE_API} = require("./tables/style-table-api");
-
+const {STYLE_TABLE_API} = require("./tables/style-table-api");
+const {STYLE_TABLE_UI_DESCRIPTION} = require("./tables/style-table-view-discription");
+const {STYLE_TABLE_UI_FIELD_DESCRIPTION,STYLE_TABLE_UI_BUTTON_DESCRIPTION} = require("./tables/style-table-field-discription.js");
 
 module.exports = {
-  STYLE_TTABLE_API: () => {
-    return  STYLE_TTABLE_API()
+  STYLE_TABLE_API: () => {
+    return  STYLE_TABLE_API()
   },
+  STYLE_TABLE_UI_DESCRIPTION,
+  STYLE_TABLE_UI_FIELD_DESCRIPTION,
+  STYLE_TABLE_UI_BUTTON_DESCRIPTION
 };

@@ -8,7 +8,7 @@ module.exports = {
   body: {
     content: [
       UIDESIGN,
-      // FIELD_DEFINE,
+      FIELD_DEFINE,
       
       { title: "邏輯描述" },
       { title: "Service整理" },

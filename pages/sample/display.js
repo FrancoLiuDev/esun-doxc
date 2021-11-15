@@ -1,6 +1,6 @@
 var root = require("app-root-path");
 const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
-const { STYLE_TTABLE_API } = require(root + "/style/table-styleing");
+const { STYLE_TABLE_API ,STYLE_TABLE_UI_DESCRIPTION,STYLE_TABLE_UI_FIELD_DESCRIPTION,STYLE_TABLE_UI_BUTTON_DESCRIPTION} = require(root + "/style/table-styleing");
 
 const {
   META_CONTACT_ONEPAGE,
@@ -41,7 +41,10 @@ module.exports = {
                   },
                 }
               ),
-              STYLE_TTABLE_API(),
+              STYLE_TABLE_API(),
+              STYLE_TABLE_UI_DESCRIPTION(),
+              STYLE_TABLE_UI_FIELD_DESCRIPTION(),
+              STYLE_TABLE_UI_BUTTON_DESCRIPTION()
             ],
           },
         },
