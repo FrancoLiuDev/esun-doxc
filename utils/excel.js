@@ -46,7 +46,6 @@ function getCellPositionMap({ ex, ey }, { x, y }) {
 }
 
 const getSheetTables = ({ sheet }) => {
-  console.log("sheet", sheet);
   let collector = {};
   let number = 1;
 
@@ -55,22 +54,17 @@ const getSheetTables = ({ sheet }) => {
       break;
     } else {
       let datas = [];
-      const range = sheet[`B${number}`]["v"];
-      const xStart = [...range.trim()][0];
-      const xEnd = [...range.trim()][3];
-      const yStart = [...range.trim()][1];
-      const yEnd = [...range.trim()][4];
-
-      collector[sheet[`A${number}`]["v"]] = sheet[`B${number}`]["v"];
-
+      const range = sheet[`B${number}`]["v"].trim().split(':');
+      const xStart = [...range[0]].slice(0,1).join("");
+      const xEnd = [...range[1]].slice(0,1).join("");
+      const yStart =[...range[0]].slice(1).join("");
+      const yEnd = [...range[1]].slice(1).join("");
+　　　　　
       for (let y = 0; y <= yEnd.charCodeAt() - yStart.charCodeAt(); y++) {
-        //
         datas.push([
           ...new Array(xEnd.charCodeAt() - xStart.charCodeAt()).fill(""),
         ]);
         for (let x = 0; x <= xEnd.charCodeAt() - xStart.charCodeAt(); x++) {
-          //
-          //
           const cell = sheet[
             getCellPositionMap({ ex: xStart, ey: yStart }, { x: x, y: y })
           ];
@@ -78,7 +72,7 @@ const getSheetTables = ({ sheet }) => {
             
         }
       }
-      console.log("datas", datas);
+      collector[sheet[`A${number}`]["v"]] = datas; 
     }
     number++;
   }
