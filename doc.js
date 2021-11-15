@@ -1,4 +1,3 @@
-
 var root = require("app-root-path");
 const {
   File,
@@ -33,7 +32,6 @@ const parser = require("./parser");
 const block = require("./pages/sample/index.js");
 // require("./download.js");
 
- 
 async function gen() {
   try {
     const bodys = parser.parse(block.body, { parser: parser });
@@ -58,15 +56,15 @@ async function gen() {
           properties: {
             page: {
               margin: {
-                top: convertInchesToTwip(1),
-                right: convertInchesToTwip(0.5),
-                bottom: convertInchesToTwip(1),
-                left: convertInchesToTwip(0.5),
+                // top: convertInchesToTwip(1),
+                // right: convertInchesToTwip(0.5),
+                // bottom: convertInchesToTwip(1),
+                // left: convertInchesToTwip(0.5),
               },
               size: {
-                orientation: PageOrientation.PORTRAIT,
-                height: convertInchesToTwip(11.69),
-                width: convertInchesToTwip(8.27),
+                orientation: PageOrientation.LANDSCAPE,
+                 height: convertInchesToTwip(11.69),
+                 width: convertInchesToTwip(8.27),
               },
             },
           },

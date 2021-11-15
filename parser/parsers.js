@@ -129,10 +129,11 @@ function parseTable({ payload, level, meta = {}, param }) {
     return new TableRow({
       children: headers.map((h) => {
         let field = r[h.key];
-
+        
         if (!field || typeof field === "string" && !field) {
           field = "N/A";
         }
+        console.log('field', field)
         const cell =
           typeof field === "string"
             ? [new Paragraph(field)]

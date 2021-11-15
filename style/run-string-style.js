@@ -1,3 +1,5 @@
+
+
 module.exports = {
   STRING_RUN_BLOCK_ARRAY_LIST: (str, options = {}) => {
     const strList = str.split("\n");
@@ -16,7 +18,7 @@ module.exports = {
             last.payload.push({
               type: "image",
               content: `http://localhost:3000/getfile?file=${s.trim().slice(6)}`,
-              width: 600,
+              width: image.width,
             });
           a.push({
             type: "run",
@@ -32,8 +34,7 @@ module.exports = {
       }
       return a;
     }, []);
-    console.log("STRING_RUN_BLOCK_ARRAY_LIST", JSON.stringify(paragraphs));
-
+    
     return paragraphs;
   },
 };

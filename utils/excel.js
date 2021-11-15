@@ -54,33 +54,77 @@ const getSheetTables = ({ sheet }) => {
       break;
     } else {
       let datas = [];
-      const range = sheet[`B${number}`]["v"].trim().split(':');
-      const xStart = [...range[0]].slice(0,1).join("");
-      const xEnd = [...range[1]].slice(0,1).join("");
-      const yStart =[...range[0]].slice(1).join("");
+      const range = sheet[`B${number}`]["v"].trim().split(":");
+      const xStart = [...range[0]].slice(0, 1).join("");
+      const xEnd = [...range[1]].slice(0, 1).join("");
+      const yStart = [...range[0]].slice(1).join("");
       const yEnd = [...range[1]].slice(1).join("");
-　　　　　
       for (let y = 0; y <= +yEnd - +yStart; y++) {
         datas.push([
           ...new Array(xEnd.charCodeAt() - xStart.charCodeAt()).fill("ee"),
         ]);
         for (let x = 0; x <= xEnd.charCodeAt() - xStart.charCodeAt(); x++) {
-          const cell = sheet[
-            getCellPositionMap({ ex: xStart, ey: yStart }, { x: x, y: y })
-          ];
-          datas[y][x] = cell ? cell.v: undefined
-            
+          const cell =
+            sheet[
+              getCellPositionMap({ ex: xStart, ey: yStart }, { x: x, y: y })
+            ];
+          datas[y][x] = cell ? cell.v : undefined;
         }
       }
-      collector[sheet[`A${number}`]["v"]] = datas; 
+      collector[sheet[`A${number}`]["v"]] = datas;
     }
     number++;
   }
+  return collector;
+};
 
+const getSheetFixedTable = ({ sheet }) => {
    
-  return {};
+  let recordCnt = 1;
+  let alpha = 'A'
+  while (true) {
+    if (!sheet[`A${recordCnt}`]) {
+      recordCnt = recordCnt -1
+      break;
+    } 
+    recordCnt++;
+  }
+  while (true) {
+    if (!sheet[`${alpha}1`]) {
+      alpha = String.fromCharCode(alpha.charCodeAt() - 1)
+      break;
+    } else{
+      alpha = getNextAlpha(alpha)
+    }
+  }
+ 
+  let datas = [];
+  const range = `A1:${alpha}${recordCnt}`.trim().split(":");
+  const xStart = [...range[0]].slice(0, 1).join("");
+  const xEnd = [...range[1]].slice(0, 1).join("");
+  const yStart = [...range[0]].slice(1).join("");
+  const yEnd = [...range[1]].slice(1).join("");
+  for (let y = 0; y <= +yEnd - +yStart; y++) {
+    datas.push([
+      ...new Array(xEnd.charCodeAt() - xStart.charCodeAt()).fill("ee"),
+    ]);
+    for (let x = 0; x <= xEnd.charCodeAt() - xStart.charCodeAt(); x++) {
+      let cell =
+        sheet[getCellPositionMap({ ex: xStart, ey: yStart }, { x: x, y: y })];
+      
+      if (cell && 'v' in cell && (typeof cell.v !== 'string' )){
+        cell = ""+cell.v
+      }
+
+      datas[y][x] = cell ? cell.v : undefined;
+    }
+  }
+    
+  console.log('collector',datas)
+  return datas;
 };
 
 module.exports = {
   getSheetTables: getSheetTables,
+  getSheetFixedTable: getSheetFixedTable,
 };

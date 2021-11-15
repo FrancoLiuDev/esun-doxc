@@ -29,7 +29,6 @@ module.exports = {
   },
   META_CHAPTER_TABLE: () => {
     return  {
-     
       indent: {
         size: 600,
       },

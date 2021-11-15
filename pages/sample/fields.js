@@ -1,5 +1,15 @@
 var root = require("app-root-path");
-const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
+//excel
+const { getSheetTables,getSheetFixedTable } = require(root + "/utils/excel");
+const xl = require("xlsx");
+const workbook = xl.readFile("./downloads/手續費.xlsx");
+
+const {
+  STYLE_TABLE_API,
+  STYLE_TABLE_UI_DESCRIPTION,
+  STYLE_TABLE_UI_FIELD_DESCRIPTION,
+  STYLE_TABLE_UI_BUTTON_DESCRIPTION,
+} = require(root + "/style/table-styleing");
 const {
   META_CONTACT_ONEPAGE,
   META_CONTACT_ONE_CHAPTER,
@@ -22,8 +32,16 @@ module.exports = {
           payload: "查詢主畫面",
           meta: META_CHAPTER_INDEX(),
           childs: {
-            meta: META_CHAPTER_BODY(),
+            // meta: META_CHAPTER_BODY(),
             content: [
+              
+              STYLE_TABLE_UI_FIELD_DESCRIPTION({
+                tableRow: getSheetFixedTable({ sheet: workbook.Sheets["Sheet2"]}),
+              }),
+              ...STRING_RUN_BLOCK_ARRAY_LIST(
+                ``
+              ),
+              
               // ...STRING_RUN_BLOCK_ARRAY_LIST(
               //   `image:photo/手續費/手續費查詢.png
               //   ffefefefefef`

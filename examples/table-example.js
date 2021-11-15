@@ -47,11 +47,8 @@ module.exports = {
               //   ]
               // },
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `ffefefefefef
-                fefefefefefefeffe
-                image:photo/手續費/手續費查詢.png
-                fefefefe
-                feffeff`,
+                `image:photo/手續費/手續費查詢.png
+               `,
                 {
                   image: {
                     meta: META_CHAPTER_BODY_IMG(),
