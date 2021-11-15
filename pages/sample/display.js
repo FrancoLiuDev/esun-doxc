@@ -1,7 +1,15 @@
 var root = require("app-root-path");
 const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
 const { STYLE_TABLE_API ,STYLE_TABLE_UI_DESCRIPTION,STYLE_TABLE_UI_FIELD_DESCRIPTION,STYLE_TABLE_UI_BUTTON_DESCRIPTION} = require(root + "/style/table-styleing");
-
+const {getSheetTables} = require(root + "/utils/excel");
+const xl = require("xlsx");
+ 
+// const sheetNames = workbook.SheetNames['Sheet1'];
+// for (var sheet in workbook.Sheets) {
+//   console.log("sheet", workbook.Sheets[sheet]);
+// }
+const workbook = xl.readFile("./downloads/手續費.xlsx");
+getSheetTables({sheet:workbook.Sheets['Sheet1']})
 const {
   META_CONTACT_ONEPAGE,
   META_CONTACT_ONE_CHAPTER,

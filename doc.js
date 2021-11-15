@@ -27,22 +27,12 @@ const {
 
 const fs = require("fs");
 const levels = require("./style-levels");
-
-const xl = require("xlsx");
 const styleDefault = require("./style-default");
 const styleParagraph = require("./style-paragraph");
 const parser = require("./parser");
-const { downloadFile } = require("./utils/download");
-const { sdUrl } = require(root + "/utils/download");
-const f = downloadFile(sdUrl + "sd-file/手續費.xlsx",'./downloads/手續費.xlsx')
 
+// require("./download.js");
 
-
-var workbook = xl.readFile("./downloads/手續費.xlsx");
-const sheetNames = workbook.SheetNames['Sheet1'];
-for (var sheet in workbook.Sheets) {
-  console.log("sheet", workbook.Sheets[sheet]);
-}
  
 async function gen() {
   try {
