@@ -25,7 +25,7 @@ module.exports = {
             meta: META_CHAPTER_BODY(),
             content: [
               // ...STRING_RUN_BLOCK_ARRAY_LIST(
-              //   `image:手續費/手續費查詢.png
+              //   `image:photo/手續費/手續費查詢.png
               //   ffefefefefef`
               // ),
             ],

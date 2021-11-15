@@ -19,7 +19,7 @@ const {
   convertInchesToTwip,
 } = require("docx");
 const fs = require("fs");
-const { download } = require("../images/image");
+const { downloadImage } = require("../utils/download");
 const table = new Table({
   columnWidths: [3505, 5505],
   rows: [

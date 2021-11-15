@@ -12,7 +12,7 @@ const {
 } = require(root + "/style/sd-content-meta");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
-const { sdUrl } = require(root + "/images/image");
+const { sdUrl } = require(root + "/utils/download");
 module.exports = {
   UIDESIGN: {
     type: "run",
@@ -31,7 +31,7 @@ module.exports = {
               // {
               //   meta: META_CHAPTER_BODY_IMG(),
               //   type: "run",
-              //   payload: [IMAGE_UI_FORM(sdUrl + "手續費/手續費查詢.png")],
+              //   payload: [IMAGE_UI_FORM(sdUrl + "photo/手續費/手續費查詢.png")],
               // },
               // {
               //   "type": "run",
@@ -41,7 +41,7 @@ module.exports = {
               //       "meta": {
               //         "style": "sd-descripion-body-image"
               //       },
-              //       "content": "http://localhost:3000/getfile?file=手續費/手續費查詢.png",
+              //       "content": "http://localhost:3000/getfile?file=photo/手續費/手續費查詢.png",
               //       "width": 600
               //     }
               //   ]
@@ -49,7 +49,7 @@ module.exports = {
               ...STRING_RUN_BLOCK_ARRAY_LIST(
                 `ffefefefefef
                 fefefefefefefeffe
-                image:手續費/手續費查詢.png
+                image:photo/手續費/手續費查詢.png
                 fefefefe
                 feffeff`,
                 {

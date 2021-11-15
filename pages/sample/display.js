@@ -12,7 +12,7 @@ const {
 } = require(root + "/style/sd-content-meta");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
-const { sdUrl } = require(root + "/images/image");
+ 
 module.exports = {
   UIDESIGN: {
     type: "run",
@@ -31,7 +31,7 @@ module.exports = {
               ...STRING_RUN_BLOCK_ARRAY_LIST(
                 `ffefefefefef
                 fefefefefefefeffe
-                image:手續費/手續費查詢.png
+                image:photo/手續費/手續費查詢.png
                 fefefefe
                 feffeff`,
                 {

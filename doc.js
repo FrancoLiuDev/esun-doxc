@@ -1,5 +1,5 @@
 const block = require("./pages/sample/index.js");
-
+var root = require("app-root-path");
 const {
   File,
   HeadingLevel,
@@ -27,11 +27,23 @@ const {
 
 const fs = require("fs");
 const levels = require("./style-levels");
+
+const xl = require("xlsx");
 const styleDefault = require("./style-default");
 const styleParagraph = require("./style-paragraph");
 const parser = require("./parser");
-const { download } = require("./images/image");
+const { downloadFile } = require("./utils/download");
+const { sdUrl } = require(root + "/utils/download");
+const f = downloadFile(sdUrl + "sd-file/手續費.xlsx",'./excel手續費.xlsx')
 
+
+
+var workbook = xl.readFile("./files/Untitled.xlsx");
+// const sheetNames = workbook.SheetNames['Sheet1'];
+// for (var sheet in workbook.Sheets) {
+//   console.log("sheet", workbook.Sheets[sheet]);
+// }
+ 
 async function gen() {
   try {
     const bodys = parser.parse(block.body, { parser: parser });
@@ -57,14 +69,14 @@ async function gen() {
             page: {
               margin: {
                 top: convertInchesToTwip(1),
-                right:convertInchesToTwip(0.5),
+                right: convertInchesToTwip(0.5),
                 bottom: convertInchesToTwip(1),
                 left: convertInchesToTwip(0.5),
               },
               size: {
                 orientation: PageOrientation.PORTRAIT,
                 height: convertInchesToTwip(11.69),
-                 width: convertInchesToTwip(8.27),
+                width: convertInchesToTwip(8.27),
               },
             },
           },

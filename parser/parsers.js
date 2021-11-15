@@ -17,7 +17,7 @@ const {
   ShadingType,
   convertInchesToTwip,
 } = require("docx");
-const { download } = require("../images/image");
+const { downloadImage } = require("../utils/download");
 
 // run
 function parseRun({ payload, level, meta = {} }) {
@@ -47,7 +47,7 @@ function parseRun({ payload, level, meta = {} }) {
       } else {
         switch (c.type) {
           case "image":
-            const img = download(c.content);
+            const img = downloadImage(c.content);
             const width = c.width ? c.width : img.dimensions.width;
             const rate = width / img.dimensions.width;
             const height = c.content.height

@@ -4,6 +4,7 @@ const { IMAGE_UI_FORM } = require(root + "/style/image-styleing");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root + "/style/run-string-style");
 const {UIDESIGN}  = require('./display');
 const {FIELD_DEFINE}  = require('./fields');
+
 module.exports = {
   body: {
     content: [
