@@ -60,9 +60,9 @@ const getSheetTables = ({ sheet }) => {
       const yStart =[...range[0]].slice(1).join("");
       const yEnd = [...range[1]].slice(1).join("");
 　　　　　
-      for (let y = 0; y <= yEnd.charCodeAt() - yStart.charCodeAt(); y++) {
+      for (let y = 0; y <= +yEnd - +yStart; y++) {
         datas.push([
-          ...new Array(xEnd.charCodeAt() - xStart.charCodeAt()).fill(""),
+          ...new Array(xEnd.charCodeAt() - xStart.charCodeAt()).fill("ee"),
         ]);
         for (let x = 0; x <= xEnd.charCodeAt() - xStart.charCodeAt(); x++) {
           const cell = sheet[
