@@ -31,6 +31,8 @@ const styleParagraph = require("./style-paragraph");
 const parser = require("./parser");
 const feeQuery = require(root + "/pages/手續費/查詢");
 const feeＣreate = require(root + "/pages/手續費/新增");
+const docVersion = require(root + "/pages/版本管理");
+
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
 const {
@@ -42,10 +44,18 @@ const {
   META_CHAPTER_TABLE,
 } = require(root + "/style/sd-content-meta");
 // require("./download.js");
+const { STYLE_TABLE_DOC_VERSIONS } = require(root + "/style/table-styleing");
 
 async function gen(block, fileName) {
   try {
     const bodys = parser.parse(block.body, { parser: parser });
+    const versions = parser.parse(docVersion.body, { parser: parser });　
+
+    // STYLE_TABLE_UI_DESCRIPTION({
+    //   data: getSheetTables({ sheet: workbook.Sheets["Sheet1"] })[
+    //     "手續費率查詢畫面"
+    //   ],
+    // }),
     const doc = new File({
       background: {
         // color: "C45911",
@@ -110,10 +120,10 @@ async function gen(block, fileName) {
           children: [
             new TableOfContents("文件目錄", {
               hyperlink: true,
-
               headingStyleRange: "1-5",
               stylesWithLevels: [new StyleLevel("MySpectacularStyle", 1)],
             }),
+          //  ...versions,
             ...bodys,
           ],
         },

@@ -1,24 +1,11 @@
-function findNext(alpha) {
-  let chars = [...alpha].reverse();
+var root = require("app-root-path");
+const xl = require("xlsx");
+const workbook = xl.readFile("./downloads/api.xlsx");
 
-  const idx = chars.findIndex((c) => {
-    return c.charCodeAt() < "Z".charCodeAt();
-  });
-  if (idx >= 0) {
-    chars[idx] = String.fromCharCode(chars[idx].charCodeAt() + 1);
-    for (let i = 0; i < idx; i++) {
-      chars[idx] = "A";
-    }
-  } else {
-    chars.push("A");
-    chars = chars.map((c) => {
-      return "A";
-    });
-  }
-  return chars.reverse().join("");
-}
-let Alpha = "A";
-for (let i = 0; i < 500; i++) {
-  Alpha = findNext(Alpha);
-  console.log("Alpha", Alpha);
-}
+ 
+const { getSheetTables,getSheetFixedTable,getSheetＨeadTable } = require(root + "/utils/excel");
+
+const result = getSheetＨeadTable({ sheet: workbook.Sheets["Sheet3"]})
+
+
+console.log('result', result)

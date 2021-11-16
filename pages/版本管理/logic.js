@@ -31,41 +31,32 @@ module.exports = {
       content: [
         {
           type: "run",
-          payload: "新增表單",
+          payload: "查詢主畫面",
           meta: META_CHAPTER_INDEX(),
           childs: {
             // meta: META_CHAPTER_BODY(),
             meta: META_CHAPTER_INDEX(),
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `輸入新增主表單欄位
-                輸入新增主表單欄位
-                輸入新增主表單欄位
-                輸入新增主表單欄位
-                grrgrgrgrgrrgrgrg`
+                `輸入查詢條件後點選查詢按鍵依條件取後查詢結果`
               ),
-              ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式rgrgrgrgr選擇計費方式選擇計費方式選擇計費方式rggrgggggggggggggggggggggggggggggggggggggggggg`
+             ...STRING_RUN_BLOCK_ARRAY_LIST(
+                `點選清除查詢清除查詢條件`
               ),
-              ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `選擇計算方式`
-              ),
-              ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `輸入表單後點選傳送`
-              ),
+
             ],
           },
         },
         {
           type: "run",
-          payload: "新增級距式費率",
+          payload: "查詢結果",
           meta: META_CHAPTER_INDEX(),
           childs: {
             // meta: META_CHAPTER_BODY(),
             meta: META_CHAPTER_INDEX(),
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `輸入必填欄位上級距，下級距，費率欄位後點選確定`
+                `點選明細，修改，註銷。`
               ),
              　
 

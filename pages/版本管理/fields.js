@@ -14,65 +14,57 @@ const {
   META_CONTACT_ONEPAGE,
   META_CONTACT_ONE_CHAPTER,
   META_CHAPTER_INDEX,
-  META_CHAPTER_INDEX_LEVEL3,
-  META_CHAPTER_BODY_SECOND_BODY,
   META_CHAPTER_BODY,
 } = require(root + "/style/sd-content-meta");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
 
 module.exports = {
-  LOGIC_DEFINE: {
+  FIELD_DEFINE: {
     type: "run",
-    payload: "邏輯描述",
+    payload: "欄位定義",
     meta: META_CONTACT_ONEPAGE(),
     childs: {
       meta: META_CONTACT_ONE_CHAPTER(),
       content: [
         {
           type: "run",
-          payload: "新增表單",
+          payload: "查詢主畫面",
           meta: META_CHAPTER_INDEX(),
           childs: {
             // meta: META_CHAPTER_BODY(),
-            meta: META_CHAPTER_INDEX(),
             content: [
+              
+              STYLE_TABLE_UI_FIELD_DESCRIPTION({
+                tableRow: getSheetFixedTable({ sheet: workbook.Sheets["欄位查詢主畫面"]}),
+              }),
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `輸入新增主表單欄位
-                輸入新增主表單欄位
-                輸入新增主表單欄位
-                輸入新增主表單欄位
-                grrgrgrgrgrrgrgrg`
+                ``
               ),
+              STYLE_TABLE_UI_BUTTON_DESCRIPTION({
+                tableRow: getSheetFixedTable({ sheet: workbook.Sheets["欄位查詢主畫面BUTTON"]}),
+              }),
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式rgrgrgrgr選擇計費方式選擇計費方式選擇計費方式rggrgggggggggggggggggggggggggggggggggggggggggg`
-              ),
-              ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `選擇計算方式`
-              ),
-              ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `輸入表單後點選傳送`
+                ``
               ),
             ],
           },
         },
         {
           type: "run",
-          payload: "新增級距式費率",
+          payload: "查詢結果",
           meta: META_CHAPTER_INDEX(),
           childs: {
-            // meta: META_CHAPTER_BODY(),
-            meta: META_CHAPTER_INDEX(),
             content: [
+              STYLE_TABLE_UI_BUTTON_DESCRIPTION({
+                tableRow: getSheetFixedTable({ sheet: workbook.Sheets["欄位查詢結果BUTTON"]}),
+              }),
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `輸入必填欄位上級距，下級距，費率欄位後點選確定`
+                ``
               ),
-             　
-
             ],
           },
         },
-       　
       ],
     },
   },

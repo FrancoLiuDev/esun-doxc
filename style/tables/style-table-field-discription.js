@@ -37,7 +37,7 @@ let getHeader = ({ columnSpan, label }) => {
     ],
   };
 };
-const unit = 100;
+const unit = 1400;
 
 const headers = [
   {
@@ -119,16 +119,16 @@ module.exports = {
       meta: {
         ...META_CHAPTER_TABLE(),
         ...{
-          width: 13000,
+          width: 6000,
           columnWidths: [
             unit,
             unit * 2,
             unit,
             unit,
-            unit * 4,
+            unit *1,
             unit,
             unit * 2,
-            unit * 5,
+            unit * 1,
             unit,
           ],
         },
@@ -153,6 +153,10 @@ module.exports = {
     };
   },
   STYLE_TABLE_UI_BUTTON_DESCRIPTION: ({ tableRow }) => {
+    return {
+      type:'run',
+      payload:'STYLE_TABLE_UI_BUTTON_DESCRIPTION'
+    }
     const elHeaders = tableRow.slice(0, 1)[0];
     const findRow = function (row, name) {
       return elHeaders.findIndex((eh) => {

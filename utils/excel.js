@@ -3,6 +3,8 @@ var request = require("sync-request");
 var sizeOf = require("buffer-image-size");
 const fs = require("fs");
 
+const detectLimitRetry = 5;
+
 function getNextAlpha(alpha) {
   let chars = [...alpha].reverse();
 
@@ -96,7 +98,6 @@ const getSheetFixedTable = ({ sheet }) => {
       alpha = getNextAlpha(alpha);
     }
   }
-
   let datas = [];
   const range = `A1:${alpha}${recordCnt}`.trim().split(":");
   const xStart = [...range[0]].slice(0, 1).join("");
@@ -122,7 +123,33 @@ const getSheetFixedTable = ({ sheet }) => {
   return datas;
 };
 
+const getSheetＨeadTable = ({ sheet }) => {
+
+  
+  console.log('sheet',sheet['!merges'])
+  //detectLimitRetry
+  let recordCnt = 1;
+  let retry = 0;
+  let alpha = "A";
+  while (true) {
+    if (!sheet[`A${recordCnt}`]) {
+      recordCnt++;
+      retry = retry + 1;
+      if (retry > detectLimitRetry){
+        console.log('retry',retry)
+        break;
+      } 
+    } else {
+      
+      retry = 0;
+      recordCnt++;
+    }
+  }
+  return [];
+};
+
 module.exports = {
   getSheetTables: getSheetTables,
   getSheetFixedTable: getSheetFixedTable,
+  getSheetＨeadTable: getSheetＨeadTable,
 };

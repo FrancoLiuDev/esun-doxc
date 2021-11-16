@@ -52,6 +52,9 @@ module.exports = {
                       tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
                     }),
                     ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
+                    
+ 
+                   
                   ],
                 },
               },
@@ -81,6 +84,9 @@ module.exports = {
                       tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
                     }),
                     ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
+                    
+ 
+                   
                   ],
                 },
               },
