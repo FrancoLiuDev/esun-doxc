@@ -49,8 +49,6 @@ module.exports = {
               ...STRING_RUN_BLOCK_ARRAY_LIST(
                 `輸入表單後點選傳送`
               ),
-            
-
             ],
           },
         },

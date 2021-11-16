@@ -121,30 +121,13 @@ async function gen(block, fileName) {
     });
 
     Packer.toBuffer(doc).then((buffer) => {
-      fs.writeFileSync(`${fileName}.docx`, buffer);
+      fs.writeFileSync(`outputs/${fileName}.docx`, buffer);
     });
   } catch (error) {
     console.error("ERROR:", error);
   }
 }
 
-// gen(feeQuery, "手續費查詢");
+gen(feeQuery, "手續費查詢");
 gen(feeＣreate, "手續費新增");
-
-// new Paragraph({
-//   children: [
-//     new TextRun({
-//       text: "break",
-
-//     }),
-//     new TextRun({
-//       text: "break",
-//       break: 1,
-//     }),
-//     new TextRun({
-
-//       break: 1,
-//     }),
-//     image,
-//   ],
-// }),
+　
