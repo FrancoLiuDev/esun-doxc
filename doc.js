@@ -29,13 +29,30 @@ const levels = require("./style-levels");
 const styleDefault = require("./style-default");
 const styleParagraph = require("./style-paragraph");
 const parser = require("./parser");
-const block = require("./pages/sample/index.js");
+const feeQuery = require(root + "/pages/手續費/查詢");
+const feeＣreate = require(root + "/pages/手續費/新增");
+const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
+  "/style/run-string-style");
+const {
+  META_CONTACT_ONEPAGE,
+  META_CONTACT_ONE_CHAPTER,
+  META_CHAPTER_INDEX,
+  META_CHAPTER_BODY,
+  META_CHAPTER_BODY_IMG,
+  META_CHAPTER_TABLE,
+} = require(root + "/style/sd-content-meta");
 // require("./download.js");
 
-async function gen() {
+async function gen(block, fileName) {
   try {
     const bodys = parser.parse(block.body, { parser: parser });
     const doc = new File({
+      background: {
+        // color: "C45911",
+        default: new Header({
+          children: [new Paragraph("background")],
+        }),
+      },
       features: {
         updateFields: true,
       },
@@ -53,6 +70,13 @@ async function gen() {
       },
       sections: [
         {
+          // ...STRING_RUN_BLOCK_ARRAY_LIST(` image:photo/手續費/手續費查詢.png`, {
+          //   image: {
+          //     meta: META_CHAPTER_BODY_IMG(),
+          //     width: 600,
+          //   },
+          // }),
+
           properties: {
             page: {
               margin: {
@@ -63,10 +87,15 @@ async function gen() {
               },
               size: {
                 orientation: PageOrientation.LANDSCAPE,
-                 height: convertInchesToTwip(11.69),
-                 width: convertInchesToTwip(8.27),
+                height: convertInchesToTwip(11.69),
+                width: convertInchesToTwip(8.27),
               },
             },
+          },
+          background: {
+            default: new Header({
+              children: [new Paragraph("background")],
+            }),
           },
           headers: {
             default: new Header({
@@ -92,13 +121,15 @@ async function gen() {
     });
 
     Packer.toBuffer(doc).then((buffer) => {
-      fs.writeFileSync("My Document.docx", buffer);
+      fs.writeFileSync(`${fileName}.docx`, buffer);
     });
   } catch (error) {
     console.error("ERROR:", error);
   }
 }
-gen();
+
+// gen(feeQuery, "手續費查詢");
+gen(feeＣreate, "手續費新增");
 
 // new Paragraph({
 //   children: [
