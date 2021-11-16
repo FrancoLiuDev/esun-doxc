@@ -34,7 +34,7 @@ function parseRun({ payload, level, meta = {} }) {
         numbering: meta.number
           ? {
               reference: meta.number.name,
-              level: level,
+              level: meta.number.level ? meta.number.level :  level,
             }
           : undefined,
         children: [new TextRun(payload)],
@@ -89,7 +89,7 @@ function parseRun({ payload, level, meta = {} }) {
         numbering: meta.number
           ? {
               reference: meta.number.name,
-              level: level,
+              level: meta.number.level ? meta.number.level :  level,
             }
           : undefined,
         children: list,
@@ -133,7 +133,7 @@ function parseTable({ payload, level, meta = {}, param }) {
         if (!field || typeof field === "string" && !field) {
           field = "N/A";
         }
-        console.log('field', field)
+       
         const cell =
           typeof field === "string"
             ? [new Paragraph(field)]

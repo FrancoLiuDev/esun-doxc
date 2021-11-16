@@ -79,25 +79,24 @@ const getSheetTables = ({ sheet }) => {
 };
 
 const getSheetFixedTable = ({ sheet }) => {
-   
   let recordCnt = 1;
-  let alpha = 'A'
+  let alpha = "A";
   while (true) {
     if (!sheet[`A${recordCnt}`]) {
-      recordCnt = recordCnt -1
+      recordCnt = recordCnt - 1;
       break;
-    } 
+    }
     recordCnt++;
   }
   while (true) {
     if (!sheet[`${alpha}1`]) {
-      alpha = String.fromCharCode(alpha.charCodeAt() - 1)
+      alpha = String.fromCharCode(alpha.charCodeAt() - 1);
       break;
-    } else{
-      alpha = getNextAlpha(alpha)
+    } else {
+      alpha = getNextAlpha(alpha);
     }
   }
- 
+
   let datas = [];
   const range = `A1:${alpha}${recordCnt}`.trim().split(":");
   const xStart = [...range[0]].slice(0, 1).join("");
@@ -111,16 +110,15 @@ const getSheetFixedTable = ({ sheet }) => {
     for (let x = 0; x <= xEnd.charCodeAt() - xStart.charCodeAt(); x++) {
       let cell =
         sheet[getCellPositionMap({ ex: xStart, ey: yStart }, { x: x, y: y })];
-      
-      if (cell && 'v' in cell && (typeof cell.v !== 'string' )){
-        cell = ""+cell.v
+
+      if (cell && "v" in cell && typeof cell.w !== "string") {
+        cell = "" + cell.w;
       }
 
-      datas[y][x] = cell ? cell.v : undefined;
+      datas[y][x] = cell ? cell.w : undefined;
     }
   }
-    
-  console.log('collector',datas)
+
   return datas;
 };
 

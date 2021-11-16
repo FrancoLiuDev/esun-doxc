@@ -189,7 +189,7 @@ const doc = new File({
           size: 28,
           bold: true,
           italics: true,
-          color: "FF0000",
+          color: "000000",
         },
         paragraph: {
           spacing: {
@@ -203,7 +203,7 @@ const doc = new File({
           bold: true,
           underline: {
             type: UnderlineType.DOUBLE,
-            color: "FF0000",
+            color: "000000",
           },
         },
         paragraph: {
@@ -215,7 +215,7 @@ const doc = new File({
       },
       listParagraph: {
         run: {
-          color: "#FF0000",
+          color: "#000000",
         },
       },
     },

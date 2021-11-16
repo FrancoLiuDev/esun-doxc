@@ -22,9 +22,32 @@ module.exports = {
       },
     };
   },
+  META_CHAPTER_INDEX_LEVEL3: () => {
+    return {
+      number: {
+        name: "number-sd-design-index",
+        level:3
+      },
+    };
+  },
   META_CHAPTER_BODY: () => {
     return  {
       style: "sd-descripion-body",
+    };
+  },
+  META_CHAPTER_BODY_IMG: () => {
+    return  {
+      style: "sd-descripion-body-image",
+    };
+  },
+  META_CHAPTER_BODY_SECOND_BODY: () => {
+    return  {
+      style: "sd-descripion-body-second",
+    };
+  },
+  META_CHAPTER_BODY_SECOND_BODY_IMG: () => {
+    return  {
+      style: "sd-descripion-body-second",
     };
   },
   META_CHAPTER_TABLE: () => {
@@ -34,11 +57,14 @@ module.exports = {
       },
     };
   },
-  META_CHAPTER_BODY_IMG: () => {
+  META_CHAPTER_TABLE_BODY_SECOND: () => {
     return  {
-      style: "sd-descripion-body-image",
+      indent: {
+        size: 1100,
+      },
     };
   },
+  
 
   
 };

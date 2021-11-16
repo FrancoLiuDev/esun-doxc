@@ -45,6 +45,25 @@ module.exports = {
       },
     },
     {
+      id: "sd-descripion-body-second",
+      name: "sd-descripion-body-second",
+      basedOn: "Normal",
+      quickFormat: true,
+      paragraph: {
+        spacing: { line: 276, before: 20 * 72 * 0.1, after: 20 * 72 * 0.05 },
+        indent: { left: convertInchesToTwip(.8), hanging: 0 },
+      },
+    },
+    {
+      id: "sd-descripion-body-image-second",
+      name: "sd-descripion-body-image-second",
+      basedOn: "Normal",
+      quickFormat: true,
+      paragraph: {
+        indent: { left: convertInchesToTwip(.8), hanging: 0 },
+      },
+    },
+    {
       id: "MySpectacularStyle",
       name: "My Spectacular Style",
       basedOn: "Heading1",

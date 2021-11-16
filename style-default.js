@@ -17,7 +17,7 @@ const {
     STYLE_DEFAULT:  {
         heading1: {
           run: {
-            size: 28,
+            size: 23,
             bold: true,
             italics: true,
             color: "000000",
@@ -30,7 +30,7 @@ const {
         },
         heading2: {
           run: {
-            size: 24,
+            size: 21,
             bold: true,
             color: "000000",  
           },
@@ -49,7 +49,7 @@ const {
         },
         heading3: {
           run: {
-            size: 26,
+            size: 18,
             bold: true,
             underline: {
               type: UnderlineType.DOUBLE,
@@ -65,7 +65,7 @@ const {
         },
         listParagraph: {
           run: {
-            color: "#FF0000",
+            color: "#000000",
           },
         },
       },

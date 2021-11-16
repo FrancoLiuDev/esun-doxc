@@ -5,9 +5,7 @@ const {STYLE_TABLE_UI_DESCRIPTION} = require("./tables/style-table-view-discript
 const {STYLE_TABLE_UI_FIELD_DESCRIPTION,STYLE_TABLE_UI_BUTTON_DESCRIPTION} = require("./tables/style-table-field-discription.js");
 
 module.exports = {
-  STYLE_TABLE_API: () => {
-    return  STYLE_TABLE_API()
-  },
+  STYLE_TABLE_API,
   STYLE_TABLE_UI_DESCRIPTION,
   STYLE_TABLE_UI_FIELD_DESCRIPTION,
   STYLE_TABLE_UI_BUTTON_DESCRIPTION
