@@ -148,12 +148,24 @@ function parseTable({ payload, level, meta = {}, param }) {
       }),
     });
   });
+  
+  let  width =  {
+    size: 100,
+    type: WidthType.PERCENTAGE,
+  }
+
+  if (meta.width && typeof meta.width !== 'object'){
+    width = {
+      size: meta.width,
+      type: WidthType.DXA,
+    }
+  }
+  if (meta.width && typeof meta.width === 'object'){
+    width = meta.width
+  }
 
   const table = new Table({
-    width: {
-      size: 100,
-      type: WidthType.PERCENTAGE,
-    },
+    width:  width,
     indent: {
       size: meta.indent.size,
       type: WidthType.DXA,
