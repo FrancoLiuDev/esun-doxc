@@ -153,10 +153,10 @@ module.exports = {
     };
   },
   STYLE_TABLE_UI_BUTTON_DESCRIPTION: ({ tableRow }) => {
-    return {
-      type:'run',
-      payload:'STYLE_TABLE_UI_BUTTON_DESCRIPTION'
-    }
+    // return {
+    //   type:'run',
+    //   payload:'STYLE_TABLE_UI_BUTTON_DESCRIPTION'
+    // }
     const elHeaders = tableRow.slice(0, 1)[0];
     const findRow = function (row, name) {
       return elHeaders.findIndex((eh) => {
