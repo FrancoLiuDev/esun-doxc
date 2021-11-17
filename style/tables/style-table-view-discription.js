@@ -9,20 +9,22 @@ const {
   META_CHAPTER_BODY,
   META_CHAPTER_BODY_IMG,
   META_CHAPTER_TABLE,
+  META_CHAPTER_TABLE_BODY_SECOND
 } = require(root + "/style/sd-content-meta");
 
 module.exports = {
   STYLE_TABLE_UI_DESCRIPTION: ({ data }) => {
     
     return {
+      type: "tableh",
       meta: {
         ...META_CHAPTER_TABLE(),
         ...{
-          width: 13000,
+          width: 6000,
           columnWidths: [80, 10000],
         },
       },
-      type: "tableh",
+    
       payload: {
         headers: [
           { label: "text", key: "row1" },

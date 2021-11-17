@@ -123,9 +123,10 @@ function parseTable({ payload, level, meta = {}, param }) {
       children: [...cell],
     });
   });
-
+  
   const tableRows = rows.map((r) => {
     return new TableRow({
+     
       children: headers.map((h) => {
         let field = r[h.key];
         
@@ -151,8 +152,8 @@ function parseTable({ payload, level, meta = {}, param }) {
 
   const table = new Table({
     width: {
-      size: meta.width,
-      type: WidthType.DXA,
+      size: 100,
+      type: WidthType.PERCENTAGE,
     },
     indent: {
       size: meta.indent.size,
@@ -161,6 +162,8 @@ function parseTable({ payload, level, meta = {}, param }) {
     columnWidths: meta.columnWidths,
     rows: [
       new TableRow({
+        tableHeader:true,
+        cantSplit:true,
         children: tableCellHeaders,
       }),
       ...tableRows,
@@ -190,6 +193,7 @@ function parseTableH({ payload, level, meta = {}, param }) {
                 { parser: param.parser }
               );
         return new TableCell({
+          
           shading: {
             fill: i === 0 ? "efefef" : "ffffff",
             color: "000000",
@@ -207,9 +211,9 @@ function parseTableH({ payload, level, meta = {}, param }) {
     },
     indent: {
       size: meta.indent.size,
-      type: WidthType.DXA,
+      type: WidthType.AUTO,
     },
-    columnWidths: meta.columnWidths,
+    columnWidths: meta.columnWidths  ,
 
     rows: [...tableRows],
   });
@@ -219,6 +223,7 @@ function parseTableFree({ payload, level, meta = {}, param }) {
   const rows = payload.rows;
   const tableRows = rows.map((row) => {
     return new TableRow({
+      tableHeader:true,
       children: row.map((item, i) => {
         const cell = param.parser.parse(
           {

@@ -3,7 +3,8 @@ var root = require("app-root-path");
 const { getSheetTables, getSheetFixedTable } = require(root + "/utils/excel");
 const xl = require("xlsx");
 const workbook = xl.readFile("./downloads/api.xlsx");
-
+const workbook2 = xl.readFile("./downloads/手續費.xlsx");
+ 
 const {
   STYLE_TABLE_API,
   STYLE_TABLE_UI_DESCRIPTION,
@@ -51,6 +52,14 @@ module.exports = {
                     STYLE_TABLE_API({
                       tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
                     }),
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                    STYLE_TABLE_UI_DESCRIPTION({
+                      data: getSheetFixedTable({
+                        sheet: workbook2.Sheets["手續費新增_Component"],
+                      }),
+                    }),
+                    
                     ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
                     
  
