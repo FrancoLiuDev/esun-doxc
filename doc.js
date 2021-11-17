@@ -20,6 +20,10 @@ const {
   Header,
   Footer,
   PageOrientation,
+  HorizontalPositionAlign,
+  VerticalPositionAlign,
+  FrameAnchorType,
+  PageNumber,
   convertMillimetersToTwip,
   convertInchesToTwip,
 } = require("docx");
@@ -51,8 +55,16 @@ async function gen(block, fileName) {
     const image = new ImageRun({
       data: fs.readFileSync("./img/esun.png"),
       transformation: {
-        width: 100,
-        height: 100,
+        width: 220,
+        height: 44,
+      },
+      floating: {
+        horizontalPosition: {
+          offset: 1014400, // relative: HorizontalPositionRelativeFrom.PAGE by default
+        },
+        verticalPosition: {
+          offset: 1014400 / 3, // relative: VerticalPositionRelativeFrom.PAGE by default
+        },
       },
     });
 
@@ -102,23 +114,32 @@ async function gen(block, fileName) {
               },
             },
           },
-          background: {
-            default: new Header({
-              children: [new Paragraph("background")],
-            }),
-          },
           headers: {
             default: new Header({
               children: [
                 new Paragraph({
                   children: [image],
                 }),
+                new Paragraph({
+                  alignment: AlignmentType.RIGHT,
+                  children: [new TextRun("機密文件")],
+                }),
               ],
             }),
           },
+
           footers: {
             default: new Footer({
-              children: [new Paragraph("Footer text")],
+              children: [
+                new Paragraph("SD文件範本"),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      children: ["第", PageNumber.CURRENT,"頁","/",PageNumber.TOTAL_PAGES],
+                    }),
+                  ],
+                }),
+              ],
             }),
           },
           children: [
