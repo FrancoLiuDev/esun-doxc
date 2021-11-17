@@ -19,7 +19,7 @@ module.exports = {
         ...META_CHAPTER_TABLE(),
         ...{
           width: 13000,
-          columnWidths: [1500, 6000],
+          columnWidths: [80, 10000],
         },
       },
       type: "tableh",

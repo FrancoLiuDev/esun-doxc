@@ -37,7 +37,7 @@ let getHeader = ({ columnSpan, label }) => {
     ],
   };
 };
-const unit = 1400;
+const unit = 1800;
 
 const headers = [
   {
@@ -119,7 +119,7 @@ module.exports = {
       meta: {
         ...META_CHAPTER_TABLE(),
         ...{
-          width: 6000,
+          width: 13000,
           columnWidths: [
             unit,
             unit * 2,

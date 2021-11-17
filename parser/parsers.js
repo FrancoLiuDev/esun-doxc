@@ -118,8 +118,7 @@ function parseTable({ payload, level, meta = {}, param }) {
     return new TableCell({
       shading: {
         fill: "eeeeee",
-        type: ShadingType.REVERSE_DIAGONAL_STRIPE,
-        color: "000000",
+        color: "ffffff",
       },
       children: [...cell],
     });
