@@ -9,26 +9,28 @@ const {
   META_CHAPTER_BODY,
   META_CHAPTER_BODY_IMG,
   META_CHAPTER_TABLE,
-  META_CHAPTER_TABLE_BODY_SECOND
+  META_CHAPTER_TABLE_BODY_SECOND,
 } = require(root + "/style/sd-content-meta");
 
 module.exports = {
   STYLE_TABLE_UI_DESCRIPTION: ({ data }) => {
-    
     return {
       type: "tableh",
       meta: {
-        ...META_CHAPTER_TABLE(),
         ...{
-          width: 6000,
-          columnWidths: [80, 10000],
+          columnWidths: [2000, 5000],
+        },
+        ...{
+          indent: {
+            size: 800,
+          },
         },
       },
-    
+
       payload: {
         headers: [
-          { label: "text", key: "row1" },
-          { label: "row2", key: "row2" },
+          { label: "text", key: "row1", width: 2000 },
+          { label: "row2", key: "row2", width: 5000 },
         ],
         rows: [
           {
