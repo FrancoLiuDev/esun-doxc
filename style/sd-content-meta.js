@@ -1,5 +1,5 @@
 module.exports = {
-  META_CONTACT_ONEPAGE: () => {
+  META_CONTACT_ONE_DOCCUMENT: () => {
     return {
       heading: "Heading1",
       number: {
@@ -7,12 +7,20 @@ module.exports = {
       },
     };
   },
-  META_CONTACT_ONE_CHAPTER: () => {
+  META_CONTACT_ONEPAGE: () => {
     return {
       heading: "Heading2",
       number: {
         name: "number-sd-design-index",
       },
+    };
+  },
+  META_CONTACT_ONE_CHAPTER: () => {
+    return {
+      heading: "Heading3",
+      // number: {
+      //   name: "number-sd-design-index",
+      // },
     };
   },
   META_CHAPTER_INDEX: () => {

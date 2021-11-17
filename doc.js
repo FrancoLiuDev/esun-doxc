@@ -30,7 +30,7 @@ const styleDefault = require("./style-default");
 const styleParagraph = require("./style-paragraph");
 const parser = require("./parser");
 const feeQuery = require(root + "/pages/手續費/查詢");
-const feeＣreate = require(root + "/pages/手續費/新增");
+const feeＣreate = require(root + "/pages/手續費/新增修改");
 const docVersion = require(root + "/pages/版本管理");
 
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
