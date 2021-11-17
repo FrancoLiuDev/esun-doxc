@@ -2,8 +2,9 @@ var root = require("app-root-path");
 //excel
 const { getSheetTables, getSheetFixedTable } = require(root + "/utils/excel");
 const xl = require("xlsx");
-const workbook = xl.readFile("./downloads/手續費.xlsx");
-
+const workbook = xl.readFile("./downloads/api.xlsx");
+const workbook2 = xl.readFile("./downloads/手續費.xlsx");
+ 
 const {
   STYLE_TABLE_API,
   STYLE_TABLE_UI_DESCRIPTION,
@@ -14,25 +15,28 @@ const {
   META_CONTACT_ONEPAGE,
   META_CONTACT_ONE_CHAPTER,
   META_CHAPTER_INDEX,
+  META_CHAPTER_INDEX_LEVEL3,
+  META_CHAPTER_BODY_SECOND_BODY,
   META_CHAPTER_BODY,
 } = require(root + "/style/sd-content-meta");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
 
 module.exports = {
-  FIELD_DEFINE: {
+  SERVICE_DEFINE: {
     type: "run",
-    payload: "欄位定義",
+    payload: "Service整理",
     meta: META_CONTACT_ONEPAGE(),
     childs: {
       meta: META_CHAPTER_BODY(),
       content: [
-        STYLE_TABLE_UI_FIELD_DESCRIPTION({
-          tableRow: getSheetFixedTable({
-            sheet: workbook.Sheets["手續費新增_欄位1"],
-          }),
-        }),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(``),
+        {
+
+          type: "run",
+          payload: "N/A",
+          
+        },
+        　 
       ],
     },
   },

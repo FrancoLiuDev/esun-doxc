@@ -14,25 +14,25 @@ const {
   META_CONTACT_ONEPAGE,
   META_CONTACT_ONE_CHAPTER,
   META_CHAPTER_INDEX,
+  META_CHAPTER_INDEX_LEVEL3,
+  META_CHAPTER_BODY_SECOND_BODY,
   META_CHAPTER_BODY,
 } = require(root + "/style/sd-content-meta");
 const { STRING_RUN_BLOCK_ARRAY_LIST } = require(root +
   "/style/run-string-style");
 
 module.exports = {
-  FIELD_DEFINE: {
+  FIELD_CHECK: {
     type: "run",
-    payload: "欄位定義",
+    payload: "欄位驗證",
     meta: META_CONTACT_ONEPAGE(),
     childs: {
-      meta: META_CHAPTER_BODY(),
+      meta: META_CHAPTER_INDEX(),
       content: [
-        STYLE_TABLE_UI_FIELD_DESCRIPTION({
-          tableRow: getSheetFixedTable({
-            sheet: workbook.Sheets["手續費新增_欄位1"],
-          }),
-        }),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(``),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(
+          `手續費週期每月值`
+        ),
+       　
       ],
     },
   },

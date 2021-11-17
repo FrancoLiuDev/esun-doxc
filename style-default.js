@@ -51,10 +51,7 @@ const {
           run: {
             size: 18,
             bold: true,
-            underline: {
-              type: UnderlineType.DOUBLE,
-              color: "000000",
-            },
+           　
           },
           paragraph: {
             spacing: {

@@ -1,6 +1,6 @@
 var root = require("app-root-path");
 //excel
-const { getSheetTables,getSheetFixedTable } = require(root + "/utils/excel");
+const { getSheetTables, getSheetFixedTable } = require(root + "/utils/excel");
 const xl = require("xlsx");
 const workbook = xl.readFile("./downloads/手續費.xlsx");
 
@@ -30,21 +30,14 @@ module.exports = {
       meta: META_CHAPTER_INDEX(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `輸入新增主表單欄位
-          輸入新增主表單欄位
-          輸入新增主表單欄位
-          輸入新增主表單欄位
-          grrgrgrgrgrrgrgrg`
+          `特店代號為必填欄位，輸入完成後當離開輸入欄位時，自動取得特店名稱
+          　無法取得特店名稱時。。。。`
         ),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式選擇計費方式rgrgrgrgr選擇計費方式選擇計費方式選擇計費方式rggrgggggggggggggggggggggggggggggggggggggggggg`
-        ),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `選擇計算方式`
-        ),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `輸入表單後點選傳送`
-        ),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`手續費週期`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`國外卡手續費最低限額`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`費率計算方式點選區分卡別`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`費率計算方式點選級距式費率`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`點選新增級距式費率`),
       ],
     },
   },

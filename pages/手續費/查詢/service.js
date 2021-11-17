@@ -38,7 +38,7 @@ module.exports = {
             meta: META_CHAPTER_INDEX(),
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `Service名稱：get  /api/store_handling_fee`
+                `Service名稱：/merchant_fee_base/query`
               ),
               {
                 type: "run",
@@ -60,14 +60,14 @@ module.exports = {
         },
         　{
           type: "run",
-          payload: "查詢一筆手續費",
+          payload: "刪除一筆手續費",
           meta: META_CHAPTER_INDEX(),
           childs: {
             // meta: META_CHAPTER_BODY(),
             meta: META_CHAPTER_INDEX(),
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `Service名稱：get  /api/store_handling_fee`
+                `Service名稱：/merchant_fee_base/delete`
               ),
               {
                 type: "run",

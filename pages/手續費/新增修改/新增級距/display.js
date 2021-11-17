@@ -30,12 +30,8 @@ module.exports = {
       meta: META_CHAPTER_BODY(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          ` 新增表單
-          　image:photo/手續費/手續費新增/主圖.png
-          　卡別計費
-          image:photo/手續費/手續費新增/卡別計算.png
-          級距計費
-          image:photo/手續費/手續費新增/級距計算.png`,
+          ` 新增級距表單
+          　image:photo/手續費/手續費新增/新增級距式費率.png`,
           {
             image: {
               meta: META_CHAPTER_BODY_IMG(),
@@ -46,7 +42,7 @@ module.exports = {
         // STYLE_TABLE_API(),
         STYLE_TABLE_UI_DESCRIPTION({
           data: getSheetFixedTable({
-            sheet: workbook.Sheets["手續費新增_Component"],
+            sheet: workbook.Sheets["新增級距_Component"],
           }),
         }),
         // STYLE_TABLE_UI_FIELD_DESCRIPTION(),

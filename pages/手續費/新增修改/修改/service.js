@@ -32,14 +32,14 @@ module.exports = {
       content: [
         {
           type: "run",
-          payload: "新增一筆特店手續費",
+          payload: "取得一筆特店手續費",
           meta: META_CHAPTER_INDEX(),
           childs: {
             // meta: META_CHAPTER_BODY(),
             meta: META_CHAPTER_INDEX(),
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `Service名稱：get  /api/create_store_handling_fee`
+                `Service名稱：/merchant_fee_base/detail `
               ),
               {
                 type: "run",
@@ -52,18 +52,36 @@ module.exports = {
                     STYLE_TABLE_API({
                       tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
                     }),
-                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
-                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
-                    STYLE_TABLE_UI_DESCRIPTION({
-                      data: getSheetFixedTable({
-                        sheet: workbook2.Sheets["手續費新增_Component"],
-                      }),
-                    }),
-                    
                     ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
-                    
- 
-                   
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "run",
+          payload: "更新一筆特店手續費",
+          meta: META_CHAPTER_INDEX(),
+          childs: {
+            // meta: META_CHAPTER_BODY(),
+            meta: META_CHAPTER_INDEX(),
+            content: [
+              ...STRING_RUN_BLOCK_ARRAY_LIST(
+                `Service名稱：/merchant_fee_base/modify`
+              ),
+              {
+                type: "run",
+                payload: "呼叫時機：點選傳送按鍵後",
+                meta: META_CHAPTER_INDEX(),
+                childs: {
+                  meta: META_CHAPTER_INDEX(),
+                  content: [
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                    STYLE_TABLE_API({
+                      tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
+                    }),
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
                   ],
                 },
               },
