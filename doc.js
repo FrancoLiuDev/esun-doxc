@@ -58,14 +58,14 @@ async function gen(block, fileName) {
         width: 220,
         height: 44,
       },
-      floating: {
-        horizontalPosition: {
-          offset: 1014400, // relative: HorizontalPositionRelativeFrom.PAGE by default
-        },
-        verticalPosition: {
-          offset: 1014400 / 3, // relative: VerticalPositionRelativeFrom.PAGE by default
-        },
-      },
+      // floating: {
+      //   horizontalPosition: {
+      //     offset: 1014400, // relative: HorizontalPositionRelativeFrom.PAGE by default
+      //   },
+      //   verticalPosition: {
+      //     offset: 1014400 / 3, // relative: VerticalPositionRelativeFrom.PAGE by default
+      //   },
+      // },
     });
 
     const doc = new File({
