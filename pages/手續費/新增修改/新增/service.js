@@ -4,7 +4,7 @@ const { getSheetTables, getSheetFixedTable } = require(root + "/utils/excel");
 const xl = require("xlsx");
 const workbook = xl.readFile("./downloads/api.xlsx");
 const workbook2 = xl.readFile("./downloads/手續費.xlsx");
-
+const apiContent = require(root + "/apis");
 const {
   STYLE_TABLE_API,
   STYLE_TABLE_UI_DESCRIPTION,
@@ -61,6 +61,7 @@ module.exports = {
             ],
           },
         },
+        apiContent.merchant.get_merchant_info({whenCall:'特店代輸入後離開輸入欄位時'}),
         {
           type: "run",
           payload: "取得特店名稱",
