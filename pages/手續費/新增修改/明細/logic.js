@@ -30,7 +30,7 @@ module.exports = {
       meta: META_CHAPTER_INDEX(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `輸入新增主表單欄位`
+          `Ｎ／Ａ`
         ),
         
       ],

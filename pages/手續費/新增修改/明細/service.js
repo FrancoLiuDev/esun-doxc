@@ -42,7 +42,7 @@ module.exports = {
               ),
               {
                 type: "run",
-                payload: "呼叫時機：點選傳送按鍵後",
+                payload: "呼叫時機：開啟畫面時",
                 meta: META_CHAPTER_INDEX(),
                 childs: {
                   meta: META_CHAPTER_INDEX(),

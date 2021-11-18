@@ -1,7 +1,6 @@
 const {
   LevelFormat,
   AlignmentType,
-
   convertInchesToTwip,
 } = require("docx");
 
@@ -28,7 +27,7 @@ module.exports = {
   DECIMAL_START: [
     {
       level: 0,
-      format: LevelFormat.DECIMAL,
+      format: "ideographLegalTraditional",
       text: "%1",
       alignment: AlignmentType.START,
       style: {
@@ -44,7 +43,7 @@ module.exports = {
     },
     {
       level: 1,
-      format: "decimal",
+      format: LevelFormat.CARDINAL_TEXT,
       text: "(%2)",
       alignment: AlignmentType.START,
       style: {
@@ -61,7 +60,7 @@ module.exports = {
       level: 2,
       format: "decimal",
       text: "%3",
-      alignment: AlignmentType.START,
+      alignment: LevelFormat.CHICAGO,
       style: {
         paragraph: {
           indent: {

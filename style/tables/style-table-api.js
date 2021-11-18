@@ -42,32 +42,32 @@ module.exports = {
       },
       payload: {
         rows: [
-          [
-            {
-              cell: {
-                columnSpan: 4,
-                fill: "bfbfbf",
-              },
-              content: [
-                {
-                  meta: {
-                    alignment: AlignmentType.CENTER,
-                  },
-                  type: "run",
-                  payload: [
-                    {
-                      type: "string",
-                      content: "MarshallableList<Currency>物件",
-                      size: "12 pt",
-                      bold: true,
-                      color: "000000",
-                      font: "Bitstream Vera Sans",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
+          // [
+          //   {
+          //     cell: {
+          //       columnSpan: 4,
+          //       fill: "bfbfbf",
+          //     },
+          //     content: [
+          //       {
+          //         meta: {
+          //           alignment: AlignmentType.CENTER,
+          //         },
+          //         type: "run",
+          //         payload: [
+          //           {
+          //             type: "string",
+          //             content: "MarshallableList<Currency>物件",
+          //             size: "12 pt",
+          //             bold: true,
+          //             color: "000000",
+          //             font: "Bitstream Vera Sans",
+          //           },
+          //         ],
+          //       },
+          //     ],
+          //   },
+          // ],
           [
             {
               cell: {

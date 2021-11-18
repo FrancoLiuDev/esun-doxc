@@ -52,10 +52,7 @@ module.exports = {
                     STYLE_TABLE_API({
                       tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
                     }),
-                    ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
-                    
- 
-                   
+                    // ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
                   ],
                 },
               },
@@ -71,11 +68,11 @@ module.exports = {
             meta: META_CHAPTER_INDEX(),
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
-                `Service名稱：get  /api/create_store_handling_fee`
+                `Service名稱：/merchant/get_merchant_info`
               ),
               {
                 type: "run",
-                payload: "呼叫時機：點選傳送按鍵後",
+                payload: "呼叫時機：特店代輸入後離開輸入欄位時",
                 meta: META_CHAPTER_INDEX(),
                 childs: {
                   meta: META_CHAPTER_INDEX(),
@@ -84,10 +81,8 @@ module.exports = {
                     STYLE_TABLE_API({
                       tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
                     }),
-                    ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
-                    
- 
-                   
+                    // ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
+
                   ],
                 },
               },

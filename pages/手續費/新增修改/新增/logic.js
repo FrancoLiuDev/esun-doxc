@@ -30,14 +30,13 @@ module.exports = {
       meta: META_CHAPTER_INDEX(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `特店代號為必填欄位，輸入完成後當離開輸入欄位時，自動取得特店名稱
-          　無法取得特店名稱時。。。。`
+          `特店代號為必填欄位，輸入完成後當離開輸入欄位時，自動取得特店名稱`
         ),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(`手續費週期`),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(`國外卡手續費最低限額`),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(`費率計算方式點選區分卡別`),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(`費率計算方式點選級距式費率`),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(`點選新增級距式費率`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`手續費週期為月時需顯示日期欄位`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`國外卡手續費最低限額幣別選擇後需顯示金額`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`費率計算方式點選區分卡別，顯示卡別計費輸入畫面`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`費率計算方式點選級距式費率，顯示級距式費率計費輸入畫面`),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(`點選新增級距式費率,則顯示級距式費率輸入畫面`),
       ],
     },
   },

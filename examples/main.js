@@ -19,7 +19,7 @@ const {
   convertInchesToTwip,
 } = require("docx");
 const fs = require("fs");
-const { downloadImage } = require("../utils/download");
+
 const table = new Table({
   columnWidths: [3505, 5505],
   rows: [
@@ -32,18 +32,19 @@ const table = new Table({
           },
           children: [
             new Paragraph({
-              children: [new TextRun({
-                text: 'REVERSE_DIAGONAL_STRIPE',
-                shading: {
-                  // type: ShadingType.REVERSE_DIAGONAL_STRIPE,
-  
-                  color: "ffff00",
-                  
-                },
-              })],
+              children: [
+                new TextRun({
+                  text: "REVERSE_DIAGONAL_STRIPE",
+                  shading: {
+                    // type: ShadingType.REVERSE_DIAGONAL_STRIPE,
+
+                    color: "ffff00",
+                  },
+                }),
+              ],
               indent: {
-                left: '1 cm',
-                right: '1 cm',
+                left: "1 cm",
+                right: "1 cm",
 
                 // firstLine: convertInchesToTwip(0),
               },
@@ -79,25 +80,6 @@ const table = new Table({
     }),
   ],
 });
-const img = download("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/150px-NewTux.svg.png");
-const image = new ImageRun({
-  data: img.buffer,
-  // data: fs.readFileSync("./sample.png"),
-  transformation: {
-      width: 200,
-      height: 200,
-  },
-  // floating: {
-  //     horizontalPosition: {
-  //         relative: HorizontalPositionRelativeFrom.RIGHT_MARGIN,
-  //         offset: 1014400,
-  //     },
-  //     verticalPosition: {
-  //         relative: VerticalPositionRelativeFrom.BOTTOM_MARGIN,
-  //         offset: 1014400,
-  //     },
-  // },
-});
 
 const doc = new File({
   features: {
@@ -109,8 +91,8 @@ const doc = new File({
         levels: [
           {
             level: 0,
-            format: LevelFormat.DECIMAL,
-            text: "%1",
+            format: LevelFormat.CHICAGO,
+            text: "%1、",
             alignment: AlignmentType.START,
             style: {
               paragraph: {
@@ -125,8 +107,88 @@ const doc = new File({
           },
           {
             level: 1,
-            format: LevelFormat.DECIMAL,
+            format: LevelFormat.CHICAGO,
             text: "%2",
+            alignment: AlignmentType.START,
+            style: {
+              paragraph: {
+                indent: {
+                  left: convertInchesToTwip(0.1),
+                  // right: convertInchesToTwip(0.18),
+                  hanging: convertInchesToTwip(0.18),
+                  // firstLine: convertInchesToTwip(0),
+                },
+              },
+            },
+          },
+          {
+            level: 2,
+            format: LevelFormat.LOWER_LETTER,
+            text: "%3",
+            alignment: AlignmentType.START,
+            style: {
+              paragraph: {
+                indent: {
+                  left: convertInchesToTwip(0.5),
+                  // right: convertInchesToTwip(0.18),
+                  hanging: convertInchesToTwip(0.18),
+                  // firstLine: convertInchesToTwip(0),
+                },
+              },
+            },
+          },
+          {
+            level: 3,
+            format: LevelFormat.NONE,
+            text: "%4",
+            alignment: AlignmentType.START,
+            style: {
+              paragraph: {
+                indent: {
+                  left: convertInchesToTwip(0.8),
+                  // right: convertInchesToTwip(0.18),
+                  hanging: convertInchesToTwip(0.18),
+                  // firstLine: convertInchesToTwip(0),
+                },
+              },
+            },
+          },
+          {
+            level: 4,
+            format: LevelFormat.ORDINAL_TEXT,
+            text: "%5",
+            alignment: AlignmentType.START,
+            style: {
+              paragraph: {
+                indent: {
+                  left: convertInchesToTwip(0.1),
+                  // right: convertInchesToTwip(0.18),
+                  hanging: convertInchesToTwip(0.18),
+                  // firstLine: convertInchesToTwip(0),
+                },
+              },
+            },
+          },
+          {
+            level: 5,
+            format: LevelFormat.UPPER_LETTER,
+            text: "%6",
+            alignment: AlignmentType.START,
+            style: {
+              paragraph: {
+                indent: {
+                  left: convertInchesToTwip(0.1),
+                  // right: convertInchesToTwip(0.18),
+                  hanging: convertInchesToTwip(0.18),
+                  // firstLine: convertInchesToTwip(0),
+                },
+              },
+            },
+          },
+          {
+            level: 6,
+            format: LevelFormat.DECIMAL,
+            text: "%7",
             alignment: AlignmentType.START,
             style: {
               paragraph: {
@@ -141,25 +203,6 @@ const doc = new File({
           },
         ],
         reference: "my-crazy-numbering",
-      },
-      {
-        levels: [
-          {
-            level: 0,
-            format: LevelFormat.DECIMAL,
-            text: "%1",
-            alignment: AlignmentType.START,
-            style: {
-              paragraph: {
-                indent: {
-                  left: convertInchesToTwip(0.5),
-                  hanging: convertInchesToTwip(0.18),
-                },
-              },
-            },
-          },
-        ],
-        reference: "my-number-numbering-reference",
       },
       {
         levels: [
@@ -265,22 +308,22 @@ const doc = new File({
       children: [
         new TableOfContents("Summary", {
           hyperlink: true,
-          headingStyleRange: "1-5",
+          headingStyleRange: "1-７",
           stylesWithLevels: [new StyleLevel("MySpectacularStyle", 1)],
         }),
-         
+
         new Paragraph({
           text: "Hey you",
-
+          heading: HeadingLevel.HEADING_1,
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1,
+            level: 0,
           },
         }),
-        
+
         new Paragraph({
           text: "Hey you",
-            
+          heading: HeadingLevel.HEADING_2,
           numbering: {
             reference: "my-crazy-numbering",
             level: 1,
@@ -288,41 +331,20 @@ const doc = new File({
         }),
         new Paragraph({
           text: "shading",
+          heading: HeadingLevel.HEADING_3,
           shading: {
-              
-              color: "00ff00",
-              fill: "ffffff",
-          }
-           
+            color: "00ff00",
+            fill: "ffffff",
+          },
+          numbering: {
+            reference: "my-crazy-numbering",
+            level: 2,
+          },
         }),
-        new Paragraph({
-           
-          children: [
-            image,
-            new TextRun({
-              text: "Name:",
-              bold: true,
-              font: "Calibri",
-              allCaps: true,
-            }),
-            new TextRun({
-              text: "Name:",
-              bold: true,
-              font: "Calibri",
-              allCaps: true,
-              break: 1,
-            }),
-            new TextRun({
-              text: "Name:",
-              bold: true,
-              font: "Calibri",
-              allCaps: true,
-              break: 1,
-            }),
-          ],
-        }),
+
         new Paragraph({
           text: "Hello World 2",
+          heading: HeadingLevel.HEADING_4,
           numbering: {
             reference: "my-crazy-numbering",
             level: 3,
@@ -330,30 +352,32 @@ const doc = new File({
         }),
         new Paragraph({
           text: "Yeah boi",
+          heading: HeadingLevel.HEADING_5,
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1,
+            level: 4,
           },
         }),
         new Paragraph({
           text: "Hey you",
+          heading: HeadingLevel.HEADING_6,
           numbering: {
             reference: "my-crazy-numbering",
-            level: 0,
+            level: 5,
           },
         }),
         new Paragraph({
           text: "What's up fam",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 1,
+            level: 6,
           },
         }),
         new Paragraph({
           text: "Hello World 2",
           numbering: {
             reference: "my-crazy-numbering",
-            level: 0,
+            level: 7,
           },
         }),
         new Paragraph({
