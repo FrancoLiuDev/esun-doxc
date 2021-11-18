@@ -28,7 +28,7 @@ module.exports = {
     {
       level: 0,
       format: "ideographLegalTraditional",
-      text: "%1",
+      text: "%1,",
       alignment: AlignmentType.START,
       style: {
         paragraph: {
@@ -43,8 +43,8 @@ module.exports = {
     },
     {
       level: 1,
-      format: LevelFormat.CARDINAL_TEXT,
-      text: "(%2)",
+      format: 'chineseCountingThousand',
+      text: "%2,",
       alignment: AlignmentType.START,
       style: {
         paragraph: {
@@ -58,13 +58,45 @@ module.exports = {
     },
     {
       level: 2,
-      format: "decimal",
-      text: "%3",
-      alignment: LevelFormat.CHICAGO,
+      format: LevelFormat.DECIMAL,
+      text: "%3.",
+      alignment: AlignmentType.START,
       style: {
         paragraph: {
           indent: {
             left: convertInchesToTwip(1),
+            // right: convertInchesToTwip(0.18),
+            hanging: convertInchesToTwip(0.3),
+            // firstLine: convertInchesToTwip(0),
+          },
+        },
+      },
+    },
+    {
+      level: 3,
+      format: LevelFormat.BULLET,
+      text: "•",
+      alignment: AlignmentType.START,
+      style: {
+        paragraph: {
+          indent: {
+            left: convertInchesToTwip(1.3),
+            // right: convertInchesToTwip(0.18),
+            hanging: convertInchesToTwip(0.3),
+            // firstLine: convertInchesToTwip(0),
+          },
+        },
+      },
+    },
+    {
+      level: 4,
+      format: LevelFormat.UPPER_ROMAN,
+      text: "%5",
+      alignment: AlignmentType.START,
+      style: {
+        paragraph: {
+          indent: {
+            left: convertInchesToTwip(1.5),
             // right: convertInchesToTwip(0.18),
             hanging: convertInchesToTwip(0.3),
             // firstLine: convertInchesToTwip(0),

@@ -28,7 +28,7 @@ module.exports = {
     payload: "Service整理",
     meta: META_CONTACT_ONEPAGE(),
     childs: {
-      meta: META_CONTACT_ONE_CHAPTER(),
+      meta: META_CHAPTER_INDEX(),
       content: [
         {
           type: "run",

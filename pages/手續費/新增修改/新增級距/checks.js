@@ -30,7 +30,7 @@ module.exports = {
       meta: META_CHAPTER_INDEX(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `Ｎ／Ａ`
+          `上級距必需大於下級距`
         ),
        　
       ],
