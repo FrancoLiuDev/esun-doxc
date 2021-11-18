@@ -30,7 +30,7 @@ module.exports = {
       meta: META_CHAPTER_INDEX(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `Ｎ／Ａ`
+          `欄位輸入驗證邏輯比照新增手續費畫面`
         ),
        　
       ],

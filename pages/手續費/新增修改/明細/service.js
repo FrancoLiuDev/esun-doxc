@@ -58,6 +58,68 @@ module.exports = {
                   ],
                 },
               },
+              {
+                type: "run",
+                payload: "取得國外卡手續費最低限額幣別",
+                meta: META_CHAPTER_INDEX(),
+                childs: {
+                  // meta: META_CHAPTER_BODY(),
+                  meta: META_CHAPTER_INDEX(),
+                  content: [
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(
+                      `Service名稱：`
+                    ),
+                    {
+                      type: "run",
+                      payload: "呼叫時機：畫面開啟時",
+                      meta: META_CHAPTER_INDEX(),
+                      childs: {
+                        meta: META_CHAPTER_INDEX(),
+                        content: [
+                          ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                          STYLE_TABLE_API({
+                            tableRow: getSheetFixedTable({
+                              sheet: workbook.Sheets["api_example"],
+                            }),
+                          }),
+                           
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+              {
+                type: "run",
+                payload: "國外卡手續費最低限額 （元）",
+                meta: META_CHAPTER_INDEX(),
+                childs: {
+                  // meta: META_CHAPTER_BODY(),
+                  meta: META_CHAPTER_INDEX(),
+                  content: [
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(
+                      `Service名稱：`
+                    ),
+                    {
+                      type: "run",
+                      payload: "呼叫時機：畫面開啟時",
+                      meta: META_CHAPTER_INDEX(),
+                      childs: {
+                        meta: META_CHAPTER_INDEX(),
+                        content: [
+                          ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                          STYLE_TABLE_API({
+                            tableRow: getSheetFixedTable({
+                              sheet: workbook.Sheets["api_example"],
+                            }),
+                          }),
+                           
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
             ],
           },
         },

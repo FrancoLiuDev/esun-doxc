@@ -29,7 +29,7 @@ module.exports = {
       content: [
         STYLE_TABLE_UI_FIELD_DESCRIPTION({
           tableRow: getSheetFixedTable({
-            sheet: workbook.Sheets["手續費新增_欄位1"],
+            sheet: workbook.Sheets["手續費新增_欄位明細1"],
           }),
         }),
         ...STRING_RUN_BLOCK_ARRAY_LIST(``),

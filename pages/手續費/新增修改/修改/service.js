@@ -4,7 +4,7 @@ const { getSheetTables, getSheetFixedTable } = require(root + "/utils/excel");
 const xl = require("xlsx");
 const workbook = xl.readFile("./downloads/api.xlsx");
 const workbook2 = xl.readFile("./downloads/手續費.xlsx");
- 
+
 const {
   STYLE_TABLE_API,
   STYLE_TABLE_UI_DESCRIPTION,
@@ -43,16 +43,20 @@ module.exports = {
               ),
               {
                 type: "run",
-                payload: "呼叫時機：點選傳送按鍵後",
+                payload: "呼叫時機：開啟畫面時",
                 meta: META_CHAPTER_INDEX(),
                 childs: {
                   meta: META_CHAPTER_INDEX(),
                   content: [
                     ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
                     STYLE_TABLE_API({
-                      tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
+                      tableRow: getSheetFixedTable({
+                        sheet: workbook.Sheets["api_example"],
+                      }),
                     }),
-                    ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
+                    // ...STRING_RUN_BLOCK_ARRAY_LIST(
+                    //   `回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`
+                    // ),
                   ],
                 },
               },
@@ -64,7 +68,6 @@ module.exports = {
           payload: "更新一筆特店手續費",
           meta: META_CHAPTER_INDEX(),
           childs: {
-            // meta: META_CHAPTER_BODY(),
             meta: META_CHAPTER_INDEX(),
             content: [
               ...STRING_RUN_BLOCK_ARRAY_LIST(
@@ -79,16 +82,112 @@ module.exports = {
                   content: [
                     ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
                     STYLE_TABLE_API({
-                      tableRow: getSheetFixedTable({ sheet: workbook.Sheets["api_example"]}),
+                      tableRow: getSheetFixedTable({
+                        sheet: workbook.Sheets["api_example"],
+                      }),
                     }),
-                    ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
+                    // ...STRING_RUN_BLOCK_ARRAY_LIST(
+                    //   `回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`
+                    // ),
                   ],
                 },
               },
             ],
           },
         },
-        　 
+        {
+          type: "run",
+          payload: "取得特店名稱",
+          meta: META_CHAPTER_INDEX(),
+          childs: {
+            // meta: META_CHAPTER_BODY(),
+            meta: META_CHAPTER_INDEX(),
+            content: [
+              ...STRING_RUN_BLOCK_ARRAY_LIST(
+                `Service名稱：/merchant/get_merchant_info`
+              ),
+              {
+                type: "run",
+                payload: "呼叫時機：開啟畫面時",
+                meta: META_CHAPTER_INDEX(),
+                childs: {
+                  meta: META_CHAPTER_INDEX(),
+                  content: [
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                    STYLE_TABLE_API({
+                      tableRow: getSheetFixedTable({
+                        sheet: workbook.Sheets["api_example"],
+                      }),
+                    }),
+                    // ...STRING_RUN_BLOCK_ARRAY_LIST(`回傳值：請參考CBP11-SD-030101-00001_Service說明文件-QueryVendorList`),
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "run",
+          payload: "取得國外卡手續費最低限額幣別",
+          meta: META_CHAPTER_INDEX(),
+          childs: {
+            // meta: META_CHAPTER_BODY(),
+            meta: META_CHAPTER_INDEX(),
+            content: [
+              ...STRING_RUN_BLOCK_ARRAY_LIST(
+                `Service名稱：`
+              ),
+              {
+                type: "run",
+                payload: "呼叫時機：畫面開啟時",
+                meta: META_CHAPTER_INDEX(),
+                childs: {
+                  meta: META_CHAPTER_INDEX(),
+                  content: [
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                    STYLE_TABLE_API({
+                      tableRow: getSheetFixedTable({
+                        sheet: workbook.Sheets["api_example"],
+                      }),
+                    }),
+                     
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "run",
+          payload: "國外卡手續費最低限額 （元）",
+          meta: META_CHAPTER_INDEX(),
+          childs: {
+            // meta: META_CHAPTER_BODY(),
+            meta: META_CHAPTER_INDEX(),
+            content: [
+              ...STRING_RUN_BLOCK_ARRAY_LIST(
+                `Service名稱：`
+              ),
+              {
+                type: "run",
+                payload: "呼叫時機：畫面開啟時",
+                meta: META_CHAPTER_INDEX(),
+                childs: {
+                  meta: META_CHAPTER_INDEX(),
+                  content: [
+                    ...STRING_RUN_BLOCK_ARRAY_LIST(`傳入參數：`),
+                    STYLE_TABLE_API({
+                      tableRow: getSheetFixedTable({
+                        sheet: workbook.Sheets["api_example"],
+                      }),
+                    }),
+                     
+                  ],
+                },
+              },
+            ],
+          },
+        },
       ],
     },
   },

@@ -35,7 +35,8 @@ module.exports = {
           　卡別計費
           image:photo/手續費/手續費新增/卡別計算.png
           級距計費
-          image:photo/手續費/手續費新增/級距計算.png`,
+          image:photo/手續費/手續費新增/級距計算.png
+          image:photo/手續費/手續費新增/BPM.png`,
           {
             image: {
               meta: META_CHAPTER_BODY_IMG(),

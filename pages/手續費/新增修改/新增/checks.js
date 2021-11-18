@@ -30,11 +30,9 @@ module.exports = {
       meta: META_CHAPTER_INDEX(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `手續費週期每月值為每月時手續費週期每月值需為必填及日期值`
+          `手續費週期每月值為每月時手續費週期每月值需為必填及日期值(1~31)`
         ),
-        ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `國外卡手續費最低限額幣別有選擇，則國外卡手續費最低限額為必填`
-        ),
+        
        　
       ],
     },

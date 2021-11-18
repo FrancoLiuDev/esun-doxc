@@ -30,7 +30,10 @@ module.exports = {
       meta: META_CHAPTER_INDEX(),
       content: [
         ...STRING_RUN_BLOCK_ARRAY_LIST(
-          `輸入新增主表單欄位`
+          `特店名稱及序號為唯讀欄位`
+        ),
+        ...STRING_RUN_BLOCK_ARRAY_LIST(
+          `其它欄位同新增畫面`
         ),
         　
       ],
